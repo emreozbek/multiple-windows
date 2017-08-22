@@ -1,5 +1,5 @@
 
-export windowConstants from './Window'
+export {RESIZE_WINDOW} from './Window'
 
 
 

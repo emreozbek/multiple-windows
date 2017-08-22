@@ -3,5 +3,11 @@
 import * as Window from '../constants/Window'
 
 
-
-export const resizeWindow = text => ({ type: Window.RESIZE_WINDOW, text })
+export const resizeWindow = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.RESIZE_WINDOW,
+            payload: text
+        })
+    }
+}

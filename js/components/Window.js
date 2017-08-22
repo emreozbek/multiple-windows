@@ -1,16 +1,20 @@
 
 
-import React, {Component} from 'react';
-import DragDrop from './components/DragDrop';
-import Iframe from './components/Iframe';
-import Options from './components/Options';
+import React, {PropTypes, Component} from 'react'
+import DragDrop from './partial/DragDrop'
+import Iframe from './partial/Iframe'
+import Options from './partial/Options'
 
 export default class Window extends Component{
+    static propTypes = {
+        action: PropTypes.func
+    }
     constructor(props){
         super(props);
         this.windowId = "window0";
     }
     hoverState(e){
+        this.props.action(10 * Math.random());
         if(e.type == "mouseover")
             document.getElementById(this.windowId).classList.add("hover");
         else

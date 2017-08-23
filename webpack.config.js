@@ -4,7 +4,7 @@ var port = 3000;
 module.exports = {
     entry: [
         'webpack-dev-server/client?http://localhost:' + port,
-        "./js/Index.js"
+        "./src/Index.js"
     ],
     output: {
         filename: "./build/bundle.js"

@@ -1,10 +1,10 @@
 
 
 import { combineReducers } from 'redux'
-import window from './Window'
+import windows from './Window'
+
 
 const rootReducer = combineReducers({
-    response: window
+    windowsStore: windows
 })
-
 export default rootReducer

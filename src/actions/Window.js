@@ -11,3 +11,11 @@ export const resizeWindow = (text) =>{
         })
     }
 }
+export const createNewWindow = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.CREATE_NEW_WINDOW,
+            payload: text
+        })
+    }
+}

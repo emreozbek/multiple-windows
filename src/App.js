@@ -1,27 +1,39 @@
 
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import Canvas from './components/Canvas'
-import {resizeWindow} from './actions/Window'
+import Header from './components/Header'
+import * as Actions from './actions'
 import '../css/style.scss'
 
-
 class App extends Component{
+    static propTypes = {
+        windowStore   : PropTypes.array,
+        windowActions : PropTypes.object
+    }
+
     render(){
-        console.log(this.props, this.props.resizeWindow, "App");
+        console.log(this.props, this.props.windowsStore);
         return(
             <div>
-                {this.props.width}
-                <Canvas action={this.props.resizeWindow} />
+                <Header actions={this.props.windowActions} store={this.props.windowsStore} />
+                <Canvas actions={this.props.windowActions} store={this.props.windowsStore} />
             </div>
         )
     }
 }
-const mapStateToProps =  ({response}) => {
-    return response;
+const mapStateToProps =  ({windowsStore}) => {
+    return {
+        windowsStore
+    };
 };
-export default connect(mapStateToProps, {resizeWindow})(App)
+const mapDispatchToProps = dispatch => ({
+    windowActions: bindActionCreators(Actions.windowActions, dispatch)
+})
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
 
 

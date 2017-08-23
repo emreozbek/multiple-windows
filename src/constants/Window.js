@@ -2,3 +2,4 @@
 
 
 export const RESIZE_WINDOW = 'RESIZE_WINDOW'
+export const CREATE_NEW_WINDOW = 'CREATE_NEW_WINDOW'

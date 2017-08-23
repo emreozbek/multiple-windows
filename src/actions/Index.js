@@ -1,3 +1,3 @@
 
 
-export windowActions from './Window'
+export * as windowActions from './Window'

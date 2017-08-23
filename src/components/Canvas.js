@@ -7,15 +7,20 @@ import Window from './Window'
 
 export default class Canvas extends Component{
     static propTypes = {
-        action: PropTypes.func
+        actions : PropTypes.object,
+        store   : PropTypes.array
     }
     constructor(props){
         super(props);
     }
     render(){
         return(
-            <div>
-                <Window action={this.props.action}  />
+            <div className="canvas">
+                {
+                    this.props.store.map(function(item){
+                        return (<Window key={item.id} options={item} />)
+                    })
+                }
             </div>
         )
     }

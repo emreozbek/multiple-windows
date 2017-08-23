@@ -1,8 +1,3 @@
 
 
-const initalState = {
-    width: 400,
-    height: 300
-};
-
-export default initalState
+export {initialState} from './Window'

@@ -1,0 +1,10 @@
+.frame{
+  -webkit-border-radius:3px;
+  -moz-border-radius:3px;
+  border-radius:3px;
+  overflow: hidden;
+  &, iframe{
+    display: block; width: 100%; height: 100%;
+  }
+  iframe{}
+}

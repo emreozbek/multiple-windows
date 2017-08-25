@@ -9,19 +9,28 @@ export default function Window(state = initialState, action) {
                 ...state,
                 width  : action.payload
             }
-        case windowActions.CREATE_NEW_WINDOW:{
-            let newID = state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1;
+        case windowActions.CREATE_WINDOW:{
+            let newID = state.reduce((maxId, window) => Math.max(window.id, maxId), -1) + 1;
             return [
                 ...state,
                 {
                     id : newID,
-                    name: "w" + newID,
+                    componentID: "window" + newID,
                     size: {
                         width: defaultValues.size.width,
                         height: defaultValues.size.height
-                    }
+                    },
+                    url: defaultValues.url
                 }
             ]
+        } break;
+        case windowActions.SET_WIDTH : {
+            console.log(state, action);
+            return state;
+        } break;
+        case windowActions.SET_HEIGHT : {
+            console.log(state, action);
+            return state;
         } break;
         default:
             return state

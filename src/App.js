@@ -4,10 +4,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Canvas from './components/Canvas'
-import Header from './components/Header'
+import Canvas from './components/canvas/Index'
+import Header from './components/header/Index'
 import * as Actions from './actions'
 import '../css/style.scss'
+
 
 class App extends Component{
     static propTypes = {
@@ -16,10 +17,11 @@ class App extends Component{
     }
 
     render(){
-        console.log(this.props, this.props.windowsStore);
         return(
             <div>
-                <Header actions={this.props.windowActions} store={this.props.windowsStore} />
+                <Header
+                    createWindow={this.props.windowActions.createWindow}
+                    store={this.props.windowsStore} />
                 <Canvas actions={this.props.windowActions} store={this.props.windowsStore} />
             </div>
         )

@@ -1,0 +1,12 @@
+
+.options{
+  position: absolute; bottom: 0;
+  .sizeInfo{
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background: rgba(255,255,255,0.5);
+    padding: 5px;
+    font-size: 12px;
+  }
+}

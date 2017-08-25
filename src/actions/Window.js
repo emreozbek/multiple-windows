@@ -11,10 +11,27 @@ export const resizeWindow = (text) =>{
         })
     }
 }
-export const createNewWindow = (text) =>{
+
+export const createWindow = (text) =>{
     return (dispatch) => {
         dispatch({
-            type: Window.CREATE_NEW_WINDOW,
+            type: Window.CREATE_WINDOW,
+            payload: text
+        })
+    }
+}
+export const setWidth = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_WIDTH,
+            payload: text
+        })
+    }
+}
+export const setHeight = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_HEIGHT,
             payload: text
         })
     }

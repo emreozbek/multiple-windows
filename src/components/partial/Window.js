@@ -12,26 +12,32 @@ export default class Window extends Component{
     constructor(props){
         super(props);
         this.options = {
-
+            id : 0,
+            componentID: 'window1',
+            size: {width: 360, height: 480},
+            url: '#'
         };
-    }/*
+        this.options = Object.assign(this.options, this.props.options);
+    }
     hoverState(e){
-        this.props.action(10 * Math.random());
         if(e.type == "mouseover")
-            document.getElementById(this.windowId).classList.add("hover");
+            this.myWindow.classList.add("hover");
         else
-            document.getElementById(this.windowId).classList.remove("hover");
-    }*/
+            this.myWindow.classList.remove("hover");
+    }
+    componentDidMount(){
+        this.myWindow = document.getElementById(this.options.componentID);
+    }
     render(){
         return(
-            <div className="window" id={this.options.id} /*onMouseOver={this.hoverState.bind(this)} onMouseOut={this.hoverState.bind(this)}*/>
+            <div className="window" id={this.options.componentID} onMouseOver={this.hoverState.bind(this)} onMouseOut={this.hoverState.bind(this)}>
                 <div className="resize">
                     <DragDrop direction="x" relationId={this.options.id} />
                     <DragDrop direction="y" relationId={this.options.id} />
                     <DragDrop direction="xy" relationId={this.options.id} />
                 </div>
-                <Iframe url="http://www.detursports.com" />
-                <Options />
+                <Iframe url={this.options.url} />
+                <Options options={this.options} />
             </div>
         )
     }

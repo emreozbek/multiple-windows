@@ -1,7 +1,4 @@
 @import "reset.css";
-@import "bootstrap.min.css";
-@import "bootstrap-theme.min.css";
-
 *{
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
@@ -10,8 +7,8 @@
   user-select: none;
 }
 
-html, body, .viewport{
-  width: 100%; height: 100%; background: #DDD; overflow: auto;
+html, body, .canvas{
+  width: 100%; height: 100%; background: #FFF; overflow: auto;
 }
 
 

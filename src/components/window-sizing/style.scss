@@ -1,8 +1,7 @@
 
 
-.xCoor, .yCoor, .bothCoor{
-  width: 7px; height: 7px; background: #e9e9e9; position: absolute; z-index: 5;
-  pointer-events: none; opacity: 0;
+.xCoor, .yCoor, .xyCoor{
+  width: 10px; height: 10px; background: #e9e9e9; position: absolute; z-index: 5; opacity: 0;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -ms-transition: all 0.2s;
@@ -12,4 +11,4 @@
 }
 .xCoor{height: 100%; right: 0; top: 0; cursor: e-resize;}
 .yCoor{width: 100%; left: 0; bottom: 0; cursor: s-resize;}
-.bothCoor{right: 0; bottom: 0; z-index: 10; cursor: se-resize;}
+.xyCoor{right: 0; bottom: 0; z-index: 10; cursor: se-resize;}

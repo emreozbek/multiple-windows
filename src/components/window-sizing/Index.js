@@ -4,8 +4,9 @@ import PropTypes from 'prop-types'
 import './style.scss'
 
 
-export default class DropDown extends Component{
+export default class WindowSizing extends Component{
     static propTypes = {
+        id: PropTypes.number,
         windowID: PropTypes.string,
         direction: PropTypes.string,
         setWidth: PropTypes.func,
@@ -35,9 +36,11 @@ export default class DropDown extends Component{
         };
     }
     stopPosition(e){
+        document.getElementById(this.props.windowID).classList.remove("resizing");
         this.setState({calculateState : false});
     }
     startPosition(e){
+        document.getElementById(this.props.windowID).classList.add("resizing");
         this.setState({
             calculateState : true,
             startX : e.clientX,
@@ -48,11 +51,11 @@ export default class DropDown extends Component{
     }
     setWidth(e){
         if(this.state.calculateState)
-            this.props.setWidth({id: this, width: (this.state.startWidth + (e.clientX - this.state.startX))});
+            this.props.setWidth({id: this.props.id, width: (this.state.startWidth + (e.clientX - this.state.startX))});
     }
     setHeight(e){
         if(this.state.calculateState)
-            this.props.setHeight((this.state.startHeight + (e.clientY - this.state.startY)));
+            this.props.setHeight({id: this.props.id, height: (this.state.startHeight + (e.clientY - this.state.startY))});
     }
     setBoth(e){
         if(this.state.calculateState){

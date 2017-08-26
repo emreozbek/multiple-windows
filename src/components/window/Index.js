@@ -4,7 +4,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
 
-import DragDrop from '../drag-drop'
+import DragDrop from '../window-sizing'
 import Iframe from '../iframe'
 import Options from '../window-options'
 
@@ -29,6 +29,7 @@ export default class Window extends Component{
         else
             this.myWindow.classList.remove("hover");
     }
+    
     render(){
         return(
             <div className='window'
@@ -37,21 +38,24 @@ export default class Window extends Component{
                  onMouseOut={this.hoverState.bind(this)}>
                 <div className="resize">
                     <DragDrop
+                        id={this.options.id}
                         windowID={this.options.componentID}
                         direction="x"
                         setWidth={this.props.actions.setWidth} />
                     <DragDrop
+                        id={this.options.id}
                         windowID={this.options.componentID}
                         direction="y"
                         setHeight={this.props.actions.setHeight} />
                     <DragDrop
+                        id={this.options.id}
                         windowID={this.options.componentID}
                         direction="xy"
                         setWidth={this.props.actions.setWidth}
                         setHeight={this.props.actions.setHeight} />
                 </div>
-                <Iframe url={this.options.url} />
-                <Options options={this.options} />
+                <Iframe url={this.options.url} size={this.props.options.size} />
+                <Options options={this.props.options} />
             </div>
         )
     }

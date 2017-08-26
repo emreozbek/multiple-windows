@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { Button, Icon } from 'semantic-ui-react'
 import './style.scss'
 export default class Options extends Component{
     static propTypes = {
@@ -13,7 +14,12 @@ export default class Options extends Component{
     render(){
         return(
             <div className="options">
-                <div className="sizeInfo">{this.props.options.size.width + " x " + this.props.options.size.height}</div>
+                <Button.Group size="mini">
+                    <Button basic size='mini' color='green'>{this.props.options.size.width + " x " + this.props.options.size.height}</Button>
+                    <Button size='mini' basic color='brown' icon='mobile'></Button>
+                    <Button size='mini' basic color='brown' icon='tablet'></Button>
+                    <Button size='mini' basic color='brown' icon='laptop'></Button>
+                </Button.Group>
             </div>
         )
     }

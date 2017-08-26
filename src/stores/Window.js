@@ -14,7 +14,7 @@ export const initialState = [
         componentID : "window0",
         size        : {
             width: 360,
-            height: 480
+            height: 240
         },
         url  : "http://www.emreozbek.net"
     }

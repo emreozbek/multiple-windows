@@ -2,8 +2,8 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Nav, NavItem} from 'react-bootstrap'
-
+import { Button, Icon } from 'semantic-ui-react'
+import './style.scss'
 
 export default class Header extends Component{
     static propTypes = {
@@ -12,9 +12,14 @@ export default class Header extends Component{
     }
     render(){
         return(
-            <Nav bsStyle="pills" activeKey={1} onSelect={() => {this.props.createWindow()}}>
-                <NavItem eventKey={1} href="#">Add Window</NavItem>
-            </Nav>
+            <header className="header">
+                <Button.Group size="small">
+                    <Button basic size='small' color='green' icon='add' onClick={this.props.createWindow}></Button>
+                    <Button basic size='small' color='brown' icon='mobile'></Button>
+                    <Button basic size='small' color='brown' icon='tablet'></Button>
+                    <Button basic size='small' color='brown' icon='laptop'></Button>
+                </Button.Group>
+            </header>
         )
     }
 }

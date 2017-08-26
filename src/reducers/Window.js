@@ -25,11 +25,14 @@ export default function Window(state = initialState, action) {
             ]
         } break;
         case windowActions.SET_WIDTH : {
-            console.log(state, action);
-            return state;
+            return state.map(item =>
+                item.id === action.payload.id ? { ...item, size:{width: action.payload.width, height: item.size.height} } : item
+            );
         } break;
         case windowActions.SET_HEIGHT : {
-            console.log(state, action);
+            return state.map(item =>
+                item.id === action.payload.id ? { ...item, size:{width: item.size.width, height: action.payload.height} } : item
+            );
             return state;
         } break;
         default:

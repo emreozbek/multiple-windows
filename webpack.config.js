@@ -34,7 +34,7 @@ module.exports = {
         }]
     },
     devServer: {
-        contentBase: './build',
+        contentBase: './',
         watchContentBase: true,
         port: port,
         inline: true

@@ -1,5 +1,17 @@
 
 .options{
+  padding: 7px 12px 12px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(22,22,22,1);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius:5px 5px 0 0;
+  -moz-border-radius:5px 5px 0 0;
+  border-radius:5px 5px 0 0;
   .sizeInfo{
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
@@ -8,8 +20,9 @@
     padding: 5px;
     font-size: 12px;
   }
-  .button{
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+}
+.window:hover{
+  .options{
+
   }
 }

@@ -24,6 +24,9 @@ export default function Window(state = initialState, action) {
                 }
             ]
         } break;
+        case windowActions.REMOVE_WINDOW:{
+            return state.filter(item => {return item.id != action.payload});
+        } break;
         case windowActions.SET_WIDTH : {
             return state.map(item =>
                 item.id === action.payload.id ? { ...item, size:{width: action.payload.width, height: item.size.height} } : item

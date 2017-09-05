@@ -20,6 +20,14 @@ export const createWindow = (text) =>{
         })
     }
 }
+export const removeWindow = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.REMOVE_WINDOW,
+            payload: text
+        })
+    }
+}
 export const setWidth = (text) =>{
     return (dispatch) => {
         dispatch({

@@ -11,15 +11,9 @@ export default class Iframe extends Component{
     constructor(props){
         super(props);
     }
-    setSize(){
-        return {
-            width: this.props.size.width,
-            height: this.props.size.height
-        };
-    }
     render(){
         return(
-            <div className="frame" style={this.setSize()}>
+            <div className="frame">
                 <iframe scrolling="yes" src={this.props.url/* + "?v=" + Math.random()*/}></iframe>
             </div>
         )

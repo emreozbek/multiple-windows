@@ -6,59 +6,75 @@ import './style.scss'
 
 export default class WindowSizing extends Component{
     static propTypes = {
-        id: PropTypes.number,
-        windowID: PropTypes.string,
+        size: PropTypes.object,
         direction: PropTypes.string,
         setWidth: PropTypes.func,
         setHeight: PropTypes.func,
-        setBoth: PropTypes.func
+        startResizing: PropTypes.func,
+        stopResizing: PropTypes.func,
+        setSize: PropTypes.func
     }
     constructor(props){
         super(props);
-        switch (this.props.direction){
-            case "x" : {
-                document.addEventListener("mousemove", this.setWidth.bind(this));
-            } break;
-            case "y" : {
-                document.addEventListener("mousemove", this.setHeight.bind(this));
-            } break;
-            case "xy" : {
-                document.addEventListener("mousemove", this.setBoth.bind(this));
-            } break;
-        }
-        document.addEventListener("mouseup", this.stopPosition.bind(this));
         this.state = {
             startX : 0,
             startY : 0,
-            startWidth : 0,
-            startHeight : 0,
-            calculateState : false
+            size: this.props.size,
+            calculate : false
         };
     }
-    stopPosition(e){
-        document.getElementById(this.props.windowID).classList.remove("resizing");
-        this.setState({calculateState : false});
-    }
     startPosition(e){
-        document.getElementById(this.props.windowID).classList.add("resizing");
         this.setState({
-            calculateState : true,
+            calculate : true,
             startX : e.clientX,
             startY : e.clientY,
-            startWidth : document.getElementById(this.props.windowID).offsetWidth,
-            startHeight : document.getElementById(this.props.windowID).offsetHeight
+            size: this.props.size
         });
+        console.log(this, "start", this.stopPosition);
+        switch (this.props.direction){
+            case "x" : {
+                document.addEventListener("mousemove", this.props.setWidth);
+            } break;
+            case "y" : {
+                document.addEventListener("mousemove", this.props.setHeight);
+            } break;
+            case "xy" : {
+                document.addEventListener("mousemove", this.props.setSize);
+            } break;
+        }
+        document.addEventListener("mouseup", this.stopPosition.bind(this));
+        this.props.startResizing();
+    }
+    stopPosition(){
+        console.log(this, "stop");
+        switch (this.props.direction){
+            case "x" : {
+                document.removeEventListener("mousemove", this.props.setWidth);
+            } break;
+            case "y" : {
+                document.removeEventListener("mousemove", this.props.setHeight);
+            } break;
+            case "xy" : {
+                document.removeEventListener("mousemove", this.props.setSize);
+            } break;
+        }
+        document.removeEventListener("mouseup", this.stopPosition);
+        this.props.stopResizing();
+        this.setState({calculate : false});
     }
     setWidth(e){
-        if(this.state.calculateState)
-            this.props.setWidth({id: this.props.id, width: (this.state.startWidth + (e.clientX - this.state.startX))});
+        console.log(this.props, "width");
+        if(this.state.calculate)
+            this.props.setWidth(this.state.size.width + (e.clientX - this.state.startX));
     }
     setHeight(e){
-        if(this.state.calculateState)
-            this.props.setHeight({id: this.props.id, height: (this.state.startHeight + (e.clientY - this.state.startY))});
+        console.log(this.props, "height");
+        if(this.state.calculate)
+            this.props.setHeight(this.state.size.height + (e.clientY - this.state.startY));
     }
-    setBoth(e){
-        if(this.state.calculateState){
+    setSize(e){
+        console.log(this.props, "size");
+        if(this.state.calculate){
             this.setWidth(e);
             this.setHeight(e);
         }
@@ -67,6 +83,7 @@ export default class WindowSizing extends Component{
         return(
             <div className   = {this.props.direction + "Coor"}
                  onMouseDown = {this.startPosition.bind(this)}
+                 onMouseUp   = { () => {console.log("ttttt"); } }
             ></div>
         )
     }

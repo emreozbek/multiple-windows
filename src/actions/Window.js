@@ -2,16 +2,6 @@
 
 import * as Window from '../constants/Window'
 
-
-export const resizeWindow = (text) =>{
-    return (dispatch) => {
-        dispatch({
-            type: Window.RESIZE_WINDOW,
-            payload: text
-        })
-    }
-}
-
 export const createWindow = (text) =>{
     return (dispatch) => {
         dispatch({
@@ -28,19 +18,21 @@ export const removeWindow = (text) =>{
         })
     }
 }
-export const setWidth = (text) =>{
+export const setSize = (text) =>{
     return (dispatch) => {
         dispatch({
-            type: Window.SET_WIDTH,
+            type: Window.SET_SIZE,
             payload: text
         })
     }
 }
-export const setHeight = (text) =>{
+export const reloadPage = (text) =>{
     return (dispatch) => {
         dispatch({
-            type: Window.SET_HEIGHT,
+            type: Window.RELOAD_PAGE,
             payload: text
         })
     }
 }
+
+

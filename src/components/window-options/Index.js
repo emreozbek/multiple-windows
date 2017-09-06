@@ -11,7 +11,7 @@ export default class Options extends Component{
     }
     constructor(props){
         super(props);
-        console.log(this.props);
+        console.log(this.props.actions);
     }
     render(){
         return(
@@ -19,8 +19,8 @@ export default class Options extends Component{
                 <Button.Group size="mini" floated="right">
                     <Button basic size='mini' color='green'>{this.props.options.size.width + " x " + this.props.options.size.height}</Button>
                     <Button size='mini' basic color='yellow' icon='terminal'></Button>
-                    <Button size='mini' basic color='yellow' icon='refresh'></Button>
-                    <Button size='mini' basic color='yellow' icon='close' onClick={() => {this.props.actions.removeWindow(this.props.options.id)}}></Button>
+                    <Button size='mini' basic color='yellow' icon='refresh' onClick={() => {this.props.actions.reloadPage(true)}}></Button>
+                    <Button size='mini' basic color='yellow' icon='close' onClick={() => {this.props.actions.removeWindow()}}></Button>
                 </Button.Group>
             </div>
         )

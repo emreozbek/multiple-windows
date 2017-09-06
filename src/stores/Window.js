@@ -1,21 +1,21 @@
 
 export const defaultValues = {
-    id   : "w0",
-    componentID : "Phone1",
+    id   : 0,
     size : {
         width: 360,
         height: 480
     },
+    reload: false,
     url  : "http://www.emreozbek.net"
 }
 export const initialState = [
     {
         id          : 0,
-        componentID : "window0",
         size        : {
             width: 360,
             height: 240
         },
+        reload: false,
         url  : "http://www.emreozbek.net"
     }
 

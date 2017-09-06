@@ -15,36 +15,39 @@ export default class Window extends Component{
     }
     constructor(props){
         super(props);
-        console.log(this.props);
     }
     hoverState(e){
         if(e.type == "mouseover")
-            document.getElementById(this.props.options.componentID).classList.add("hover");
+            this.refs.myWindow.classList.add("hover");
         else
-            document.getElementById(this.props.options.componentID).classList.remove("hover");
-    }
-    setWidth(w){
-        this.props.actions.setWidth({id: this.props.options.id, width: w});
-        this.startResizing();
-    }
-    setHeight(h){
-        this.props.actions.setHeight({id: this.props.options.id, height: h});
-        this.startResizing();
+            this.refs.myWindow.classList.remove("hover");
     }
     startResizing(){
-        document.getElementById(this.props.options.componentID).classList.add("resizing");
+        this.refs.myWindow.classList.add("resizing");
     }
     stopResizing(){
-        document.getElementById(this.props.options.componentID).classList.remove("resizing");
+        this.refs.myWindow.classList.remove("resizing");
     }
     setSize(size){
-        this.setWidth(size.w);
-        this.setHeight(size.h);
+        this.props.actions.setSize({
+            id: this.props.options.id,
+            width: size.width,
+            height: size.height
+        });
+    }
+    removeWindow(){
+        this.props.actions.removeWindow(this.props.options.id);
+    }
+    reloadPage(state){
+        this.props.actions.reloadPage({
+            id: this.props.options.id,
+            reload: state
+        });
     }
     render(){
         return(
-            <div className='window'
-                 id={this.props.options.componentID}
+            <div ref="myWindow"
+                 className='window'
                  onMouseOver={this.hoverState.bind(this)}
                  onMouseOut={this.hoverState.bind(this)}
                  style={{
@@ -55,13 +58,13 @@ export default class Window extends Component{
                     <SizingTool
                         size          = {this.props.options.size}
                         direction     = "x"
-                        setWidth      = {this.setWidth.bind(this)}
+                        setSize       = {this.setSize.bind(this)}
                         startResizing = {this.startResizing.bind(this)}
                         stopResizing  = {this.stopResizing.bind(this)} />
                     <SizingTool
                         size          = {this.props.options.size}
                         direction     = "y"
-                        setHeight     = {this.setHeight.bind(this)}
+                        setSize       = {this.setSize.bind(this)}
                         startResizing = {this.startResizing.bind(this)}
                         stopResizing  = {this.stopResizing.bind(this)} />
                     <SizingTool
@@ -71,8 +74,16 @@ export default class Window extends Component{
                         stopResizing  = {this.stopResizing.bind(this)}
                         setSize       = {this.setSize.bind(this)} />
                 </div>
-                <Iframe url={this.props.options.url} />
-                <Options options={this.props.options} actions={ { "removeWindow" : this.props.actions.removeWindow } } />
+                <Iframe url={this.props.options.url}
+                        reload={this.props.options.reload}
+                        reloadPage={this.reloadPage.bind(this)}
+                />
+                <Options options={this.props.options}
+                         actions={{
+                            "removeWindow" : this.removeWindow.bind(this),
+                            "reloadPage"   : this.reloadPage.bind(this)
+                         }}
+                />
             </div>
         )
     }

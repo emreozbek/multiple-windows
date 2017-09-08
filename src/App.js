@@ -19,7 +19,7 @@ class App extends Component{
 
     render(){
         return(
-            <div>
+            <div className="fit">
                 <Header
                     createWindow={this.props.windowActions.createWindow}
                     store={this.props.windowsStore} />

@@ -15,6 +15,11 @@ export default class Window extends Component{
     }
     constructor(props){
         super(props);
+        this.state = {
+            dragable: false,
+            x: 'auto',
+            y: 'auto'
+        };
     }
     hoverState(e){
         if(e.type == "mouseover")
@@ -44,6 +49,22 @@ export default class Window extends Component{
             reload: state
         });
     }
+    startDrag(){
+        this.setState({dragable: true});
+        this.refs.myWindow.classList.add("moving");
+
+    }
+    stopDrag(){
+        this.setState({dragable: false});
+        this.refs.myWindow.classList.remove("moving");
+    }
+    setPosition(coor){
+        console.log(coor);
+        this.setState({
+            x: coor.x,
+            y: coor.y
+        });
+    }
     render(){
         return(
             <div ref="myWindow"
@@ -51,9 +72,10 @@ export default class Window extends Component{
                  onMouseOver={this.hoverState.bind(this)}
                  onMouseOut={this.hoverState.bind(this)}
                  style={{
-                    width: this.props.options.size.width,
-                    height: this.props.options.size.height
-                 }}>
+                    left: this.state.x,
+                    top: this.state.y
+                 }}
+            >
                 <div className="resize">
                     <SizingTool
                         size          = {this.props.options.size}
@@ -77,11 +99,18 @@ export default class Window extends Component{
                 <Iframe url={this.props.options.url}
                         reload={this.props.options.reload}
                         reloadPage={this.reloadPage.bind(this)}
+                        size={{
+                            width: this.props.options.size.width,
+                            height: this.props.options.size.height
+                        }}
                 />
                 <Options options={this.props.options}
                          actions={{
                             "removeWindow" : this.removeWindow.bind(this),
-                            "reloadPage"   : this.reloadPage.bind(this)
+                            "reloadPage"   : this.reloadPage.bind(this),
+                            "startDrag"    : this.startDrag.bind(this),
+                            "stopDrag"     : this.stopDrag.bind(this),
+                            "setPosition"  : this.setPosition.bind(this)
                          }}
                 />
             </div>

@@ -13,11 +13,11 @@ export default class Header extends Component{
     render(){
         return(
             <header className="header">
-                <Button.Group size="small">
-                    <Button basic size='small' color='green' icon='add' onClick={this.props.createWindow}></Button>
-                    <Button basic size='small' color='yellow' icon='mobile'></Button>
-                    <Button basic size='small' color='yellow' icon='tablet'></Button>
-                    <Button basic size='small' color='yellow' icon='laptop'></Button>
+                <Button.Group size="mini">
+                    <Button basic color='green' icon='add' onClick={this.props.createWindow}></Button>
+                    <Button basic color='green' icon='mobile'></Button>
+                    <Button basic color='green' icon='tablet'></Button>
+                    <Button basic color='green' icon='laptop'></Button>
                 </Button.Group>
             </header>
         )

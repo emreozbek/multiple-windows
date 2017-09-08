@@ -7,24 +7,37 @@ export default class Iframe extends Component{
     static propTypes = {
         url: PropTypes.string,
         reload: PropTypes.bool,
-        reloadPage: PropTypes.func
+        reloadPage: PropTypes.func,
+        size: PropTypes.object
     }
     constructor(props){
         super(props);
+        this.URL = this.getURL();
     }
     reload(){
-        this.props.reloadPage(false);
-        this.refs.myIframe.contentWindow.location.reload(true);
+        this.refs.myIframe.src = this.getURL();
+    }
+    componentDidUpdate(){
+        if(this.props.reload){
+            this.props.reloadPage(false);
+            this.URL = this.getURL();
+            this.reload();
+        }
+    }
+    getURL(){
+        return this.props.url + "?v=" + Math.random();
     }
     render(){
-        if(this.props.reload)
-            this.reload();
         return(
             <div className="frame">
                 <iframe
                     ref="myIframe"
                     scrolling="yes"
-                    src={this.props.url/* + "?v=" + Math.random()*/}
+                    src={this.URL}
+                    style={{
+                        width: this.props.size.width,
+                        height: this.props.size.height
+                    }}
                 ></iframe>
             </div>
         )

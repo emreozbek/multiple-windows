@@ -44,6 +44,10 @@ export default class WindowSizing extends Component{
             width: this.state.startW + (e.clientX - this.state.startX),
             height: this.state.startH + (e.clientY - this.state.startY)
         });
+        if(this.state.width <= 0)
+            this.state.width = 0;
+        if(this.state.height <= 0)
+            this.state.height = 0;
         this.props.setSize({width: this.state.width, height: this.state.height});
         switch (this.props.direction){
             case "x" : {

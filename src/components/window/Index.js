@@ -9,10 +9,6 @@ import Iframe from '../iframe'
 import Options from '../window-options'
 
 export default class Window extends Component{
-    static propTypes = {
-        options: PropTypes.object,
-        actions: PropTypes.object
-    }
     constructor(props){
         super(props);
         this.state = {
@@ -59,7 +55,6 @@ export default class Window extends Component{
         this.refs.myWindow.classList.remove("moving");
     }
     setPosition(coor){
-        console.log(coor);
         this.setState({
             x: coor.x,
             y: coor.y
@@ -67,14 +62,15 @@ export default class Window extends Component{
     }
     render(){
         return(
-            <div ref="myWindow"
-                 className='window'
-                 onMouseOver={this.hoverState.bind(this)}
-                 onMouseOut={this.hoverState.bind(this)}
-                 style={{
+            <div
+                ref="myWindow"
+                className='windowFrame'
+                onMouseOver={this.hoverState.bind(this)}
+                onMouseOut={this.hoverState.bind(this)}
+                style={{
                     left: this.state.x,
                     top: this.state.y
-                 }}
+                }}
             >
                 <div className="resize">
                     <SizingTool
@@ -96,24 +92,32 @@ export default class Window extends Component{
                         stopResizing  = {this.stopResizing.bind(this)}
                         setSize       = {this.setSize.bind(this)} />
                 </div>
-                <Iframe url={this.props.options.url}
-                        reload={this.props.options.reload}
-                        reloadPage={this.reloadPage.bind(this)}
-                        size={{
-                            width: this.props.options.size.width,
-                            height: this.props.options.size.height
-                        }}
+                <Iframe
+                    url={this.props.options.url}
+                    reload={this.props.options.reload}
+                    reloadPage={this.reloadPage.bind(this)}
+                    size={{
+                        width: this.props.options.size.width,
+                        height: this.props.options.size.height
+                    }}
                 />
-                <Options options={this.props.options}
-                         actions={{
-                            "removeWindow" : this.removeWindow.bind(this),
-                            "reloadPage"   : this.reloadPage.bind(this),
-                            "startDrag"    : this.startDrag.bind(this),
-                            "stopDrag"     : this.stopDrag.bind(this),
-                            "setPosition"  : this.setPosition.bind(this)
-                         }}
+                <Options
+                    options={this.props.options}
+                    actions={{
+                        "removeWindow" : this.removeWindow.bind(this),
+                        "reloadPage"   : this.reloadPage.bind(this),
+                        "startDrag"    : this.startDrag.bind(this),
+                        "stopDrag"     : this.stopDrag.bind(this),
+                        "setPosition"  : this.setPosition.bind(this)
+                    }}
+                    canvas={this.props.canvas}
                 />
             </div>
         )
     }
+}
+Window.propTypes = {
+    options: PropTypes.object,
+    actions: PropTypes.object,
+    canvas : PropTypes.object
 }

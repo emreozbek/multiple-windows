@@ -3,13 +3,6 @@ import PropTypes from 'prop-types'
 import './style.scss'
 
 export default class WindowSizing extends Component{
-    static propTypes = {
-        size: PropTypes.object,
-        direction: PropTypes.string,
-        startResizing: PropTypes.func,
-        stopResizing: PropTypes.func,
-        setSize: PropTypes.func
-    }
     constructor(props){
         super(props);
         this.state = {
@@ -68,4 +61,11 @@ export default class WindowSizing extends Component{
             ></div>
         )
     }
+}
+WindowSizing.propTypes = {
+    size: PropTypes.object,
+    direction: PropTypes.string,
+    startResizing: PropTypes.func,
+    stopResizing: PropTypes.func,
+    setSize: PropTypes.func
 }

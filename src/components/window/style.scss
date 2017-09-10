@@ -1,5 +1,5 @@
-.window{
-  background: #161616; margin: 10px; position: relative; padding: 51px 7px 7px 7px;
+.windowFrame{
+  background: #161616; margin: 10px; position: absolute; padding: 51px 7px 7px 7px;
   float: left;
   -webkit-border-radius:5px;
   -moz-border-radius:5px;
@@ -24,8 +24,5 @@
   .resize{
     width: 0; height: 0;
 
-  }
-  &.moving{
-    position: absolute;
   }
 }

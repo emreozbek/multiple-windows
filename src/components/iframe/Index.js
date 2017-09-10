@@ -3,13 +3,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import './style.scss'
+
 export default class Iframe extends Component{
-    static propTypes = {
-        url: PropTypes.string,
-        reload: PropTypes.bool,
-        reloadPage: PropTypes.func,
-        size: PropTypes.object
-    }
     constructor(props){
         super(props);
         this.URL = this.getURL();
@@ -42,4 +37,10 @@ export default class Iframe extends Component{
             </div>
         )
     }
+}
+Iframe.propTypes = {
+    url: PropTypes.string,
+    reload: PropTypes.bool,
+    reloadPage: PropTypes.func,
+    size: PropTypes.object
 }

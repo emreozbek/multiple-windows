@@ -6,10 +6,6 @@ import { Button, Icon } from 'semantic-ui-react'
 import './style.scss'
 
 export default class Header extends Component{
-    static propTypes = {
-        createWindow : PropTypes.func,
-        store   : PropTypes.array
-    }
     render(){
         return(
             <header className="header">
@@ -22,4 +18,8 @@ export default class Header extends Component{
             </header>
         )
     }
+}
+Header.propTypes = {
+    createWindow : PropTypes.func,
+    store   : PropTypes.array
 }

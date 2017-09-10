@@ -4,23 +4,35 @@ import Window from '../window'
 import './style.scss'
 
 export default class Canvas extends Component{
-    static propTypes = {
-        actions : PropTypes.object,
-        store   : PropTypes.array
-    }
     constructor(props){
         super(props);
     }
+    componentDidMount(){
+        this.props.actions.canvas.setPosition({
+            xPosition: this.refs.myCanvas.offsetLeft,
+            yPosition: this.refs.myCanvas.offsetTop
+        });
+    }
     render(){
-        let actions = this.props.actions;
         return(
-            <div className="canvas">
+            <div className="canvas" ref="myCanvas">
                 {
-                    this.props.store.map(function(item){
-                        return (<Window key={item.id} options={item} actions={actions} />)
-                    })
+                    this.props.store.windows.map(function(item){
+                        return (
+                            <Window
+                                key={item.id}
+                                options={item}
+                                canvas={this.props.store.canvas}
+                                actions={this.props.actions.window}
+                            />
+                        )
+                    }.bind(this))
                 }
             </div>
         )
     }
+}
+Canvas.propTypes = {
+    actions : PropTypes.object,
+    store   : PropTypes.object
 }

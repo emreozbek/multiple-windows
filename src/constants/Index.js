@@ -1,5 +1,6 @@
 
-export {RESIZE_WINDOW} from './Window'
+export * as Window from './Window'
+export * as Canvas from './Canvas'
 
 
 

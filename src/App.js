@@ -12,39 +12,39 @@ import '../css/style.scss'
 
 
 class App extends Component{
-    static propTypes = {
-        windowStore   : PropTypes.array,
-        windowActions : PropTypes.object
-    }
-
     render(){
         return(
             <div className="fit">
                 <Header
                     createWindow={this.props.windowActions.createWindow}
                     store={this.props.windowsStore} />
-                <Canvas actions={this.props.windowActions} store={this.props.windowsStore} />
+                <Canvas
+                    actions={{
+                        window : this.props.windowActions,
+                        canvas : this.props.canvasActions
+                    }}
+                    store={{
+                        windows: this.props.windowsStore,
+                        canvas : this.props.canvasStore
+                    }} />
             </div>
         )
     }
 }
-const mapStateToProps =  ({windowsStore}) => {
+App.propTypes = {
+    windowsStore  : PropTypes.array,
+    canvasStore   : PropTypes.object,
+    windowActions : PropTypes.object,
+    canvasActions : PropTypes.object
+}
+const mapStateToProps =  ({windowsStore, canvasStore}) => {
     return {
-        windowsStore
+        windowsStore,
+        canvasStore
     };
 };
 const mapDispatchToProps = dispatch => ({
-    windowActions: bindActionCreators(Actions.windowActions, dispatch)
+    windowActions: bindActionCreators(Actions.windowActions, dispatch),
+    canvasActions: bindActionCreators(Actions.canvasActions, dispatch)
 })
 export default connect(mapStateToProps, mapDispatchToProps)(App)
-
-
-
-
-
-
-
-
-
-
-

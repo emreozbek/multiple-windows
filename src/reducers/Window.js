@@ -14,6 +14,10 @@ export default function Window(state = initialState, action) {
                         width: defaultValues.size.width,
                         height: defaultValues.size.height
                     },
+                    position: {
+                        x: defaultValues.position.x,
+                        y: defaultValues.position.y
+                    },
                     url: defaultValues.url
                 }
             ]
@@ -29,6 +33,11 @@ export default function Window(state = initialState, action) {
         case actions.RELOAD_PAGE : {
             return state.map(item =>
                 item.id === action.payload.id ? { ...item, reload: action.payload.reload } : item
+            );
+        } break;
+        case actions.SET_WINDOW_POSITION : {
+            return state.map(item =>
+                item.id === action.payload.id ? { ...item, position:{x: action.payload.x, y: action.payload.y} } : item
             );
         } break;
         default:

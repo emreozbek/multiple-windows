@@ -30,6 +30,9 @@ class App extends Component{
             </div>
         )
     }
+    componentWillReceiveProps(props){
+        localStorage.setItem('windows', JSON.stringify(props.windowsStore));
+    }
 }
 App.propTypes = {
     windowsStore  : PropTypes.array,

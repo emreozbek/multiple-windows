@@ -1,6 +1,8 @@
 .windowFrame{
-  background: #161616; margin: 10px; position: absolute; padding: 51px 7px 7px 7px;
-  float: left;
+  background: #161616;
+  margin: 10px;
+  position: absolute;
+  padding: 51px 7px 7px 7px;
   -webkit-border-radius:5px;
   -moz-border-radius:5px;
   border-radius:5px;
@@ -10,19 +12,21 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-
   &.hover{
     .resize{
       .xCoor, .yCoor, .bothCoor{
         pointer-events: auto;
       }
     }
+    iframe{ pointer-events: auto;}
   }
   &.resizing, &.moving{
-    .frame{ pointer-events: none;}
+    -webkit-box-shadow : 0px 2px 12px 3px rgba(0,0,0,0.5);
+    -moz-box-shadow    : 0px 2px 12px 3px rgba(0,0,0,0.5);
+    box-shadow         : 0px 2px 12px 3px rgba(0,0,0,0.5);
+    iframe{ pointer-events: none;}
   }
   .resize{
     width: 0; height: 0;
-
   }
 }

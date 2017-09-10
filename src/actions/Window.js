@@ -35,4 +35,11 @@ export const reloadPage = (text) =>{
     }
 }
 
-
+export const setWindowPosition = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_WINDOW_POSITION,
+            payload: text
+        })
+    }
+}

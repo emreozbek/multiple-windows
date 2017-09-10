@@ -12,9 +12,7 @@ export default class Window extends Component{
     constructor(props){
         super(props);
         this.state = {
-            dragable: false,
-            x: 'auto',
-            y: 'auto'
+            zIndex: this.props.options.id
         };
     }
     hoverState(e){
@@ -46,16 +44,16 @@ export default class Window extends Component{
         });
     }
     startDrag(){
-        this.setState({dragable: true});
+        this.setState({zIndex: 99999});
         this.refs.myWindow.classList.add("moving");
-
     }
     stopDrag(){
-        this.setState({dragable: false});
+        this.setState({zIndex: this.props.options.id});
         this.refs.myWindow.classList.remove("moving");
     }
     setPosition(coor){
-        this.setState({
+        this.props.actions.setWindowPosition({
+            id: this.props.options.id,
             x: coor.x,
             y: coor.y
         });
@@ -68,8 +66,9 @@ export default class Window extends Component{
                 onMouseOver={this.hoverState.bind(this)}
                 onMouseOut={this.hoverState.bind(this)}
                 style={{
-                    left: this.state.x,
-                    top: this.state.y
+                    left: this.props.options.position.x,
+                    top: this.props.options.position.y,
+                    zIndex: this.state.zIndex
                 }}
             >
                 <div className="resize">

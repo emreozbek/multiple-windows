@@ -10,14 +10,9 @@ export default function Window(state = initialState, action) {
                 ...state,
                 {
                     id : newID,
-                    size: {
-                        width: defaultValues.size.width,
-                        height: defaultValues.size.height
-                    },
-                    position: {
-                        x: defaultValues.position.x,
-                        y: defaultValues.position.y
-                    },
+                    name : defaultValues.name,
+                    size: defaultValues.size,
+                    position: defaultValues.position,
                     url: defaultValues.url
                 }
             ]
@@ -38,6 +33,11 @@ export default function Window(state = initialState, action) {
         case actions.SET_WINDOW_POSITION : {
             return state.map(item =>
                 item.id === action.payload.id ? { ...item, position:{x: action.payload.x, y: action.payload.y} } : item
+            );
+        } break;
+        case actions.SET_WINDOW_NAME : {
+            return state.map(item =>
+                item.id === action.payload.id ? { ...item, name: action.payload.name } : item
             );
         } break;
         default:

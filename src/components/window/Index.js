@@ -58,6 +58,12 @@ export default class Window extends Component{
             y: coor.y
         });
     }
+    setWindowName(name){
+        this.props.actions.setWindowName({
+            id: this.props.options.id,
+            name
+        });
+    }
     render(){
         return(
             <div
@@ -107,7 +113,9 @@ export default class Window extends Component{
                         "reloadPage"   : this.reloadPage.bind(this),
                         "startDrag"    : this.startDrag.bind(this),
                         "stopDrag"     : this.stopDrag.bind(this),
-                        "setPosition"  : this.setPosition.bind(this)
+                        "setPosition"  : this.setPosition.bind(this),
+                        "setWindowName": this.setWindowName.bind(this),
+                        "setSize"      : this.setSize.bind(this)
                     }}
                     canvas={this.props.canvas}
                 />

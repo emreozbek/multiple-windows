@@ -8,27 +8,32 @@ import './style.scss'
 export default class WindowName extends Component {
     constructor(props) {
         super(props);
-        this.state = {setName: false};
-        this._completeName = this.completeName.bind(this);
     }
-    setName(){
-        this.setState({setName:true});
-        document.addEventListener('click', this._completeName)
-    }
-    completeName(e){
-        this.setState({setName:false});
-        document.removeEventListener('click', this._completeName)
+    setName(e){
+        if(e.keyCode == 13)
+            document.dispatchEvent(new CustomEvent('click'));
+        else
+            this.props.setWindowName(e.target.value);
     }
     render(){
         return(
-            <span>
-                <Label className={'upper noBackground ' + (this.state.setName ? 'hidden' : '')} onClick={this.setName.bind(this)}>
-                    <Icon name='window maximize' /> windowName
-                </Label>
-                <label className={'upper ' + (this.state.setName ? '' : 'hidden')}>
-                    <Input ref="windowNameTextbox" placeholder='windowName' size="mini" icon='window maximize' iconPosition='left' inverted color="black" focus={this.state.setName} />
-                </label>
-            </span>
+            <label className='upper'>
+                <Input
+                    transparent
+                    inverted
+                    ref="windowNameTextbox"
+                    size="mini"
+                    icon='window maximize'
+                    iconPosition='left'
+                    className="windowNameInput"
+                    defaultValue={this.props.name}
+                    onKeyUp={this.setName.bind(this)}
+                />
+            </label>
         )
     }
+}
+WindowName.propTypes = {
+    name: PropTypes.string,
+    setWindowName: PropTypes.func
 }

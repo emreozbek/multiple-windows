@@ -43,3 +43,11 @@ export const setWindowPosition = (text) =>{
         })
     }
 }
+export const setWindowName = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_WINDOW_NAME,
+            payload: text
+        })
+    }
+}

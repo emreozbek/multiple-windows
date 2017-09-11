@@ -1,0 +1,10 @@
+.sizeTextbox{
+  border: none;
+  background: none;
+  width: 70px;
+  text-align: center;
+  color: var(--inputColor);
+  &:focus{
+    color: var(--inputFocusColor);
+  }
+}

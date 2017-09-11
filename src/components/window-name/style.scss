@@ -1,0 +1,9 @@
+
+.windowNameInput{
+  width: 130px;
+  height: 32px;
+  color: var(--inputColor) !important;
+  &:focus{
+    color: var(--inputFocusColor) !important;
+  }
+}

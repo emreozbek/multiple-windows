@@ -1,6 +1,7 @@
 
 export const defaultValues = {
     id   : 0,
+    name : 'window',
     size : {
         width: 360,
         height: 480

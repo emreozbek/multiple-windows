@@ -97,6 +97,7 @@ export default class Window extends Component{
                         stopResizing  = {this.stopResizing.bind(this)}
                         setSize       = {this.setSize.bind(this)} />
                 </div>
+                <div className="cover"></div>
                 <Iframe
                     url={this.props.options.url}
                     reload={this.props.options.reload}

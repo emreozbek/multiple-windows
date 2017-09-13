@@ -1,6 +1,5 @@
 .windowFrame{
-  background: #161616;
-  margin: 10px;
+  background: #1b1c1d;
   position: absolute;
   padding: 51px 7px 7px 7px;
   -webkit-border-radius:5px;
@@ -20,13 +19,6 @@
     left: 0;
     top: 0;
     display: none;
-  }
-  &.hover{
-    .resize{
-      .xCoor, .yCoor, .bothCoor{
-        pointer-events: auto;
-      }
-    }
   }
   &.resizing, &.moving{
     -webkit-box-shadow : 0px 2px 12px 3px rgba(0,0,0,0.5);

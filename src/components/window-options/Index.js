@@ -29,8 +29,8 @@ export default class Options extends Component{
                             setSize={this.props.actions.setSize}
                         />
                     </Button>
-                    <Button size='mini' basic color='grey' icon='refresh' onClick={() => {this.props.actions.reloadPage(true)}}></Button>
-                    <Button size='mini' basic color='grey' icon='close' onClick={() => {this.props.actions.removeWindow()}}></Button>
+                    <Button size='mini' basic color='grey' icon='refresh' onClick={() => {this.props.actions.reloadPage.bind(true)}}></Button>
+                    <Button size='mini' basic color='grey' icon='close' onClick={() => {this.props.actions.removeWindow.bind()}}></Button>
                 </Button.Group>
                 <WindowMove
                     canvas      = {this.props.canvas}

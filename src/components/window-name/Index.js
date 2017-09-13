@@ -8,6 +8,14 @@ import './style.scss'
 export default class WindowName extends Component {
     constructor(props) {
         super(props);
+        this._complateName = this.complateName.bind(this);
+        this.state = {
+            change: false
+        };
+    }
+    complateName(){
+        this.setState({change: false});
+        document.removeEventListener('click', this._complateName);
     }
     setName(e){
         if(e.keyCode == 13)
@@ -17,19 +25,35 @@ export default class WindowName extends Component {
     }
     render(){
         return(
-            <label className='upper'>
-                <Input
-                    transparent
-                    inverted
-                    ref="windowNameTextbox"
-                    size="mini"
-                    icon='window maximize'
-                    iconPosition='left'
-                    className="windowNameInput"
-                    defaultValue={this.props.name}
-                    onKeyUp={this.setName.bind(this)}
-                />
-            </label>
+            <div className='upper nameContainer'>
+                <label className={this.state.change ? '' : 'hidden'}>
+                    <Input
+                        inverted
+                        ref="windowNameTextbox"
+                        size="mini"
+                        icon='window maximize'
+                        iconPosition='left'
+                        className="windowNameInput"
+                        defaultValue={this.props.name}
+                        onKeyUp={this.setName.bind(this)}
+                    />
+                </label>
+                <Label
+                    className={this.state.change ? 'hidden' : ''}
+                    color="black"
+                    onClick={
+                        () => {
+                            this.setState({change: true});
+                            setTimeout(() => {
+                                this.refs.windowNameTextbox.focus();
+                            }, 10);
+                            document.addEventListener('click', this._complateName);
+                        }
+                    }>
+                    <Icon name='window maximize' />
+                    {this.props.name}
+                </Label>
+            </div>
         )
     }
 }

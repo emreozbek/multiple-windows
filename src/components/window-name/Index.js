@@ -13,9 +13,12 @@ export default class WindowName extends Component {
             change: false
         };
     }
-    complateName(){
-        this.setState({change: false});
-        document.removeEventListener('click', this._complateName);
+    complateName(e){
+        console.log(e.target, this.refs.windowNameTextbox.inputRef);
+        if(e.target != this.refs.windowNameTextbox.inputRef){
+            this.setState({change: false});
+            document.removeEventListener('click', this._complateName);
+        }
     }
     setName(e){
         if(e.keyCode == 13)

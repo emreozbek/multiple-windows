@@ -8,6 +8,9 @@ export default class Iframe extends Component{
         super(props);
         this.URL = this.getURL();
     }
+    frameLoaded(e){
+        console.log("to be coded");
+    }
     reload(){
         this.refs.myIframe.src = this.getURL();
     }
@@ -32,6 +35,7 @@ export default class Iframe extends Component{
                         width: this.props.size.width,
                         height: this.props.size.height
                     }}
+                    onLoad={this.frameLoaded}
                 ></iframe>
             </div>
         )

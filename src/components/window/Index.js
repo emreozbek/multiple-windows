@@ -111,7 +111,7 @@ export default class Window extends Component{
                     options={this.props.options}
                     actions={{
                         "removeWindow" : this.removeWindow.bind(this),
-                        "reloadPage"   : this.reloadPage.bind(this),
+                        "reloadPage"   : this.reloadPage.bind(this, true),
                         "startDrag"    : this.startDrag.bind(this),
                         "stopDrag"     : this.stopDrag.bind(this),
                         "setPosition"  : this.setPosition.bind(this),

@@ -14,7 +14,6 @@ export default class WindowName extends Component {
         };
     }
     complateName(e){
-        console.log(e.target, this.refs.windowNameTextbox.inputRef);
         if(e.target != this.refs.windowNameTextbox.inputRef){
             this.setState({change: false});
             document.removeEventListener('click', this._complateName);

@@ -34,7 +34,14 @@ export const reloadPage = (text) =>{
         })
     }
 }
-
+export const reloadAllPages = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.RELOAD_ALL_PAGES,
+            payload: text
+        })
+    }
+}
 export const setWindowPosition = (text) =>{
     return (dispatch) => {
         dispatch({

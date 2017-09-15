@@ -17,6 +17,7 @@ class App extends Component{
             <div className="fit">
                 <Header
                     createWindow={this.props.windowActions.createWindow}
+                    reloadAllPages={this.props.windowActions.reloadAllPages}
                     store={this.props.windowsStore} />
                 <Canvas
                     actions={{

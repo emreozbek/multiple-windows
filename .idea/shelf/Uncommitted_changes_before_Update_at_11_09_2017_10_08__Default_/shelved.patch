@@ -1,0 +1,71 @@
+Index: src/App.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/App.js	(revision 5a5648771fb1783f62cc80a05726083cee5dc029)
++++ src/App.js	(revision )
+@@ -1,5 +1,3 @@
+-
+-
+ import React, { Component } from 'react'
+ import PropTypes from 'prop-types'
+ import { connect } from 'react-redux'
+@@ -10,7 +8,6 @@
+ import * as Actions from './actions'
+ import '../css/style.scss'
+ 
+-
+ class App extends Component{
+     static propTypes = {
+         windowStore   : PropTypes.array,
+@@ -22,7 +19,7 @@
+             <div className="fit">
+                 <Header
+                     createWindow={this.props.windowActions.createWindow}
+-                    store={this.props.windowsStore} />
++                    store={this.props.windowStore} />
+                 <Canvas actions={this.props.windowActions} store={this.props.windowsStore} />
+             </div>
+         )
+Index: src/components/window-options/Index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/components/window-options/Index.js	(revision 5a5648771fb1783f62cc80a05726083cee5dc029)
++++ src/components/window-options/Index.js	(revision )
+@@ -2,7 +2,7 @@
+ 
+ import React, {Component} from 'react'
+ import PropTypes from 'prop-types'
+-import { Button, Icon } from 'semantic-ui-react'
++import { Button, Input } from 'semantic-ui-react'
+ import './style.scss'
+ export default class Options extends Component{
+     static propTypes = {
+@@ -33,6 +33,7 @@
+         return(
+             <div className="options">
+                 <Button floated='left' basic size='mini' color='grey' icon='move' onMouseDown={this.startMoving.bind(this)}></Button>
++                    <Input size='mini' inverted placeholder='Search...' />
+                 <Button.Group size="mini" floated="right">
+                     <Button  basic size='mini' color='grey'>{this.props.options.size.width + " x " + this.props.options.size.height}</Button>
+                     <Button  basic size='mini' color='grey' icon='refresh' onClick={() => {this.props.actions.reloadPage(true)}}></Button>
+\ No newline at end of file
+Index: .idea/jsLibraryMappings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jsLibraryMappings.xml	(revision )
++++ .idea/jsLibraryMappings.xml	(revision )
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="JavaScriptLibraryMappings">
++    <file url="file://$PROJECT_DIR$" libraries="{multiple-windows node_modules}" />
++    <includedPredefinedLibrary name="ECMAScript 6" />
++  </component>
++</project>
+\ No newline at end of file

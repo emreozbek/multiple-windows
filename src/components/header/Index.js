@@ -80,6 +80,7 @@ export default class Header extends Component{
                         color='grey'
                         icon='refresh'
                         title="Refresh to All Windows"
+                        onClick = { this.props.reloadAllPages.bind(this, true) }
                         />
                     <Button
                         basic
@@ -94,5 +95,6 @@ export default class Header extends Component{
 }
 Header.propTypes = {
     createWindow : PropTypes.func,
+    reloadAllPages : PropTypes.func,
     store   : PropTypes.array
 }

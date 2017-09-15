@@ -26,6 +26,12 @@ export default function Window(state = initialState, action) {
                 item.id === action.payload.id ? { ...item, reload: action.payload.reload } : item
             );
         } break;
+        case actions.RELOAD_ALL_PAGES : {
+            return state.map(item => ({
+                ...item,
+                reload : action.payload
+            }));
+        } break;
         case actions.SET_WINDOW_POSITION : {
             return state.map(item =>
                 item.id === action.payload.id ? { ...item, position:{

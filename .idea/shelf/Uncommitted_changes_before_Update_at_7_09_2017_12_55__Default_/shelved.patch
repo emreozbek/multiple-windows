@@ -1,0 +1,46 @@
+Index: src/App.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/App.js	(revision a823ce92a838fc36e1e773c0b1cc556ea4a91285)
++++ src/App.js	(revision )
+@@ -1,5 +1,3 @@
+-
+-
+ import React, { Component } from 'react'
+ import PropTypes from 'prop-types'
+ import { connect } from 'react-redux'
+@@ -10,7 +8,6 @@
+ import * as Actions from './actions'
+ import '../css/style.scss'
+ 
+-
+ class App extends Component{
+     static propTypes = {
+         windowStore   : PropTypes.array,
+@@ -22,7 +19,7 @@
+             <div>
+                 <Header
+                     createWindow={this.props.windowActions.createWindow}
+-                    store={this.props.windowsStore} />
++                    store={this.props.windowStore} />
+                 <Canvas actions={this.props.windowActions} store={this.props.windowsStore} />
+             </div>
+         )
+Index: .idea/jsLibraryMappings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/jsLibraryMappings.xml	(revision )
++++ .idea/jsLibraryMappings.xml	(revision )
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="JavaScriptLibraryMappings">
++    <file url="file://$PROJECT_DIR$" libraries="{multiple-windows node_modules}" />
++    <includedPredefinedLibrary name="ECMAScript 6" />
++  </component>
++</project>
+\ No newline at end of file

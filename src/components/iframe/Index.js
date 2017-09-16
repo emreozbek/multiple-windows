@@ -8,11 +8,9 @@ export default class Iframe extends Component{
         super(props);
         this.URL = this.getURL();
     }
-    frameLoaded(e){
-        console.log("to be coded");
-    }
     reload(){
         this.refs.myIframe.src = this.getURL();
+        this.props.loadingIcon(true)
     }
     componentDidUpdate(){
         if(this.props.reload){
@@ -35,7 +33,7 @@ export default class Iframe extends Component{
                         width: this.props.size.width,
                         height: this.props.size.height
                     }}
-                    onLoad={this.frameLoaded}
+                    onLoad={() => this.props.loadingIcon(false)}
                 ></iframe>
             </div>
         )
@@ -45,5 +43,6 @@ Iframe.propTypes = {
     url: PropTypes.string,
     reload: PropTypes.bool,
     reloadPage: PropTypes.func,
+    loadingIcon: PropTypes.func,
     size: PropTypes.object
 }

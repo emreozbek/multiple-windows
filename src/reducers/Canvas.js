@@ -11,6 +11,19 @@ export default function Canvas(state = initialState, action) {
                 yPosition: action.payload.yPosition
             };
         } break;
+        case actions.RESIZED_WINDOW : {
+            return {
+                ...state,
+                window : {
+                    width: action.payload.width,
+                    height: action.payload.height
+                },
+                canvas : {
+                    width: action.payload.width - state.xPosition,
+                    height: action.payload.height - state.yPosition
+                }
+            };
+        } break;
         default:
             return state
     }

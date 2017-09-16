@@ -12,13 +12,26 @@ import '../css/style.scss'
 
 
 class App extends Component{
+    constructor(props){
+        super(props);
+        window.addEventListener('resize', this.resized.bind(this));
+        window.dispatchEvent(new CustomEvent('resize'));
+    }
+    resized(e){
+        this.props.canvasActions.resizedWindow({
+            width: e.target.innerWidth,
+            height: e.target.innerHeight
+        });
+    }
     render(){
         return(
             <div className="fit">
                 <Header
                     createWindow={this.props.windowActions.createWindow}
                     reloadAllPages={this.props.windowActions.reloadAllPages}
-                    store={this.props.windowsStore} />
+                    windowStore={this.props.windowsStore}
+                    canvasStore={this.props.canvasStore}
+                />
                 <Canvas
                     actions={{
                         window : this.props.windowActions,
@@ -32,6 +45,7 @@ class App extends Component{
         )
     }
     componentWillReceiveProps(props){
+        console.log(props.windowsStore); 
         localStorage.setItem('windows', JSON.stringify(props.windowsStore));
     }
 }

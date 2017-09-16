@@ -2,14 +2,14 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon, Menu, Label } from 'semantic-ui-react'
 import './style.scss'
 
 export default class Header extends Component{
     constructor(props){
         super(props);
-
     }
+
     createNewWindow(obj){
         this.props.createWindow(obj);
     }
@@ -73,6 +73,30 @@ export default class Header extends Component{
                                 }
                             })
                         } />
+                    <Button basic color='grey'>
+                        <Label color="black" className="noPadding font12px" as="span">
+                            Window Size:
+                            <Label.Detail>
+                                {
+                                    this.props.canvasStore.window.width +
+                                    "x" +
+                                    this.props.canvasStore.window.height
+                                }
+                            </Label.Detail>
+                        </Label>
+                    </Button>
+                    <Button basic color='grey' size="mini">
+                        <Label color="black" className="noPadding font12px" as="span">
+                            Canvas Size:
+                            <Label.Detail>
+                                {
+                                    (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) +
+                                    "x" +
+                                    (this.props.canvasStore.window.height - this.props.canvasStore.yPosition)
+                                }
+                            </Label.Detail>
+                        </Label>
+                    </Button>
                 </Button.Group>
                 <Button.Group floated="right" size="tiny" >
                     <Button
@@ -94,7 +118,8 @@ export default class Header extends Component{
     }
 }
 Header.propTypes = {
-    createWindow : PropTypes.func,
+    createWindow   : PropTypes.func,
     reloadAllPages : PropTypes.func,
-    store   : PropTypes.array
+    windowStore    : PropTypes.array,
+    canvasStore    : PropTypes.object
 }

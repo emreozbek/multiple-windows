@@ -5,11 +5,9 @@ import { Button,Popup, Rating } from 'semantic-ui-react'
 import WindowName from '../window-name'
 import WindowMove from '../window-move'
 import SizingTextbox from '../sizing-textbox'
-import WindowRating from '../window-rating'
 import './style.scss'
 
 export default class Options extends Component{
-    static ratio = 100;
     constructor(props){
         super(props);
     }
@@ -18,7 +16,7 @@ export default class Options extends Component{
             <div className="options">
                 <WindowName
                     name={this.props.options.name}
-                    setWindowName={this.props.actions.setWindowName}
+                    setWindowName={this.props.setWindowName}
                 />
                 <Button.Group
                     className="upper"
@@ -34,42 +32,54 @@ export default class Options extends Component{
                                 width: this.props.options.size.width,
                                 height: this.props.options.size.height
                             }}
-                            setSize={this.props.actions.setSize}
+                            setSize={this.props.setSize}
                         />
                     </Button>
-                    <WindowRating />
                     <Button
                         basic
                         size='mini'
                         color='grey'
                         icon='refresh'
-                        onClick={this.props.actions.reloadPage}>
+                        loading={this.props.loadingIcon}
+                        onClick={this.props.reloadPage}>
                     </Button>
                     <Button
-                    basic
-                    size='mini'
-                    color='grey'
-                    icon='window maximize' />
+                        basic
+                        size='mini'
+                        color='grey'
+                        icon={'window ' + (this.props.options.fullScreen ? 'minimize' : 'maximize')}
+                        onClick = {() => {this.props.fullScreen(!this.props.options.fullScreen)}}
+                    />
                     <Button
                         basic
                         size='mini'
                         color='grey'
                         icon='close'
-                        onClick={this.props.actions.removeWindow}>
+                        onClick={this.props.removeWindow}>
                     </Button>
                 </Button.Group>
                 <WindowMove
                     canvas      = {this.props.canvas}
-                    startDrag   = {this.props.actions.startDrag}
-                    stopDrag    = {this.props.actions.stopDrag}
-                    setPosition = {this.props.actions.setPosition}
+                    startDrag   = {this.props.startDrag}
+                    stopDrag    = {this.props.stopDrag}
+                    setPosition = {this.props.setPosition}
+                    fullScreenState = {this.props.options.fullScreen}
+                    fullScreen = {this.props.fullScreen}
                 />
             </div>
         )
     }
 }
 Options.propTypes = {
-    options : PropTypes.object,
-    actions : PropTypes.object,
-    canvas  : PropTypes.object
+    options      : PropTypes.object,
+    removeWindow : PropTypes.func,
+    reloadPage   : PropTypes.func,
+    startDrag    : PropTypes.func,
+    stopDrag     : PropTypes.func,
+    setPosition  : PropTypes.func,
+    setWindowName: PropTypes.func,
+    setSize      : PropTypes.func,
+    fullScreen   : PropTypes.func,
+    canvas       : PropTypes.object,
+    loadingIcon  : PropTypes.bool
 }

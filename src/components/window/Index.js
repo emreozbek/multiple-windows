@@ -12,8 +12,10 @@ export default class Window extends Component{
     constructor(props){
         super(props);
         this.state = {
-            zIndex: this.props.options.id
+            zIndex: this.props.options.id,
+            loadingIcon: false
         };
+        this._resizedWindow = this.resizedWindow.bind(this);
     }
     hoverState(e){
         if(e.type == "mouseover")
@@ -22,17 +24,21 @@ export default class Window extends Component{
             this.refs.myWindow.classList.remove("hover");
     }
     startResizing(){
-        this.refs.myWindow.classList.add("resizing");
+        if(!this.props.options.fullScreen)
+            this.refs.myWindow.classList.add("resizing");
     }
     stopResizing(){
-        this.refs.myWindow.classList.remove("resizing");
+        if(!this.props.options.fullScreen)
+            this.refs.myWindow.classList.remove("resizing");
     }
     setSize(size){
-        this.props.actions.setSize({
-            id: this.props.options.id,
-            width: size.width,
-            height: size.height
-        });
+        if(!this.props.options.fullScreen){
+            this.props.actions.setSize({
+                id: this.props.options.id,
+                width: size.width,
+                height: size.height
+            });
+        }
     }
     removeWindow(){
         this.props.actions.removeWindow(this.props.options.id);
@@ -44,24 +50,65 @@ export default class Window extends Component{
         });
     }
     startDrag(){
-        this.setState({zIndex: 99999});
-        this.refs.myWindow.classList.add("moving");
+        if(!this.props.options.fullScreen){
+            this.setState({zIndex: 99999});
+            this.refs.myWindow.classList.add("moving");
+        }
     }
     stopDrag(){
         this.setState({zIndex: this.props.options.id});
         this.refs.myWindow.classList.remove("moving");
     }
     setPosition(coor){
-        this.props.actions.setWindowPosition({
-            id: this.props.options.id,
-            x: coor.x,
-            y: coor.y
-        });
+        if(!this.props.options.fullScreen){
+            this.props.actions.setWindowPosition({
+                id: this.props.options.id,
+                x: coor.x,
+                y: coor.y
+            });
+        }
     }
     setWindowName(name){
         this.props.actions.setWindowName({
             id: this.props.options.id,
             name
+        });
+    }
+    setLoadingIcon(state){
+        this.setState({loadingIcon: state});
+    }
+    fullScreen(fullScreen){
+        this.props.actions.fullScreen({
+            id: this.props.options.id,
+            fullScreen
+        });
+        if(fullScreen){
+            this.props.actions.setWindowPosition({
+                id: this.props.options.id,
+                x: 5,
+                y: 5
+            });
+            window.addEventListener('resize', this._resizedWindow);
+            window.dispatchEvent(new CustomEvent('resize'));
+        }else{
+            window.removeEventListener('resize', this._resizedWindow);
+            this.props.actions.setSize({
+                id: this.props.options.id,
+                width: this.props.options.old.size.width,
+                height: this.props.options.old.size.height
+            });
+            this.props.actions.setWindowPosition({
+                id: this.props.options.id,
+                x: this.props.options.old.position.x,
+                y: this.props.options.old.position.y
+            });
+        }
+    }
+    resizedWindow(e){
+        this.props.actions.setSize({
+            id: this.props.options.id,
+            width: e.target.innerWidth - 24,
+            height: e.target.innerHeight - 114
         });
     }
     render(){
@@ -102,6 +149,7 @@ export default class Window extends Component{
                     url={this.props.options.url}
                     reload={this.props.options.reload}
                     reloadPage={this.reloadPage.bind(this)}
+                    loadingIcon = {this.setLoadingIcon.bind(this)}
                     size={{
                         width: this.props.options.size.width,
                         height: this.props.options.size.height
@@ -109,19 +157,25 @@ export default class Window extends Component{
                 />
                 <Options
                     options={this.props.options}
-                    actions={{
-                        "removeWindow" : this.removeWindow.bind(this),
-                        "reloadPage"   : this.reloadPage.bind(this, true),
-                        "startDrag"    : this.startDrag.bind(this),
-                        "stopDrag"     : this.stopDrag.bind(this),
-                        "setPosition"  : this.setPosition.bind(this),
-                        "setWindowName": this.setWindowName.bind(this),
-                        "setSize"      : this.setSize.bind(this)
-                    }}
-                    canvas={this.props.canvas}
+                    removeWindow = {this.removeWindow.bind(this)}
+                    reloadPage   = {this.reloadPage.bind(this, true)}
+                    startDrag    = {this.startDrag.bind(this)}
+                    stopDrag     = {this.stopDrag.bind(this)}
+                    setPosition  = {this.setPosition.bind(this)}
+                    setWindowName= {this.setWindowName.bind(this)}
+                    setSize      = {this.setSize.bind(this)}
+                    fullScreen   = {this.fullScreen.bind(this)}
+                    canvas       = {this.props.canvas}
+                    loadingIcon  = {this.state.loadingIcon}
                 />
             </div>
         )
+    }
+    componentDidMount(){
+        if(this.props.options.fullScreen){
+            window.addEventListener('resize', this._resizedWindow);
+            window.dispatchEvent(new CustomEvent('resize'));
+        }
     }
 }
 Window.propTypes = {

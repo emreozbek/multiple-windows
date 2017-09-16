@@ -33,7 +33,13 @@ export default class WindowMove extends Component{
     }
     render(){
         return (
-            <div ref="moveTool" className="moveTool" onMouseDown={this.startMoving.bind(this)}></div>
+            <div
+                ref="moveTool"
+                className="moveTool"
+                onMouseDown={this.startMoving.bind(this)}
+                onDoubleClick = {() => {this.props.fullScreen(!this.props.fullScreenState)}}
+            >
+            </div>
         )
     }
 }
@@ -41,5 +47,7 @@ WindowMove.propTypes = {
     canvas      : PropTypes.object,
     startDrag   : PropTypes.func,
     stopDrag    : PropTypes.func,
-    setPosition : PropTypes.func
+    setPosition : PropTypes.func,
+    fullScreenState : PropTypes.bool,
+    fullScreen : PropTypes.func
 };

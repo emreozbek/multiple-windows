@@ -4,10 +4,6 @@
   --inputColor : #909090;
   --inputFocusColor : #FFF;
 }
-
-
-
-
 *:not(input){
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
@@ -23,9 +19,11 @@ html, body, .fit, .app{
   width: 100%; height: 100%; overflow: auto;
 }
 .fit{
-  padding-top: 52px;
+  padding-top: 46px;
 }
 .noBackground{background-color: transparent !important; color: #DDD !important;}
 .hidden{display: none;}
+.noPadding{padding: 0 !important;}
 
+.font12px{font-size: 12px !important;}
 

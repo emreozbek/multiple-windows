@@ -58,3 +58,11 @@ export const setWindowName = (text) =>{
         })
     }
 }
+export const fullScreen = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.FULLSCREEN_WINDOW,
+            payload: text
+        })
+    }
+}

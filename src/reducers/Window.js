@@ -45,6 +45,16 @@ export default function Window(state = initialState, action) {
                 item.id === action.payload.id ? { ...item, name: action.payload.name } : item
             );
         } break;
+        case actions.FULLSCREEN_WINDOW : {
+
+            return state.map(item =>
+                item.id === action.payload.id ? {
+                    ...item,
+                    fullScreen: action.payload.fullScreen,
+                    old: (action.payload.fullScreen ? { size : item.size, position: item.position } : defaultValues.old)
+                } : item
+            );
+        } break;
         default:
             return state
     }

@@ -11,3 +11,11 @@ export const setPosition = (text) =>{
         })
     }
 }
+export const resizedWindow = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Canvas.RESIZED_WINDOW,
+            payload: text
+        })
+    }
+}

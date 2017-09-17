@@ -29,6 +29,8 @@ class App extends Component{
                 <Header
                     createWindow={this.props.windowActions.createWindow}
                     reloadAllPages={this.props.windowActions.reloadAllPages}
+                    setURLALLWindows={this.props.windowActions.setURLALLPages}
+                    setCanvasURL = {this.props.canvasActions.setURL}
                     windowStore={this.props.windowsStore}
                     canvasStore={this.props.canvasStore}
                 />
@@ -45,7 +47,6 @@ class App extends Component{
         )
     }
     componentWillReceiveProps(props){
-        console.log(props.windowsStore); 
         localStorage.setItem('windows', JSON.stringify(props.windowsStore));
     }
 }

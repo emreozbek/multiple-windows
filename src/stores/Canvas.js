@@ -1,5 +1,6 @@
 
 export const initialState = {
+    url: "http://www.google.com",
     xPosition: 0,
     yPosition: 46,
     padding: 7,

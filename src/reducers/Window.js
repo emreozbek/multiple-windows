@@ -5,12 +5,13 @@ import {initialState, defaultValues} from '../stores/Window'
 export default function Window(state = initialState, action) {
     switch (action.type) {
         case actions.CREATE_WINDOW:{
-            defaultValues.id = state.reduce((maxId, window) => Math.max(window.id, maxId), -1) + 1;
-            Object.assign(defaultValues, action.payload);
-            defaultValues.name = defaultValues.name.concat(" - " + defaultValues.id);
+            let newWindow = defaultValues;
+            newWindow.id = state.reduce((maxId, window) => Math.max(window.id, maxId), -1) + 1;
+            Object.assign(newWindow, action.payload);
+            newWindow.name = newWindow.name.concat(" - " + newWindow.id);
             return [
                 ...state,
-                defaultValues
+                newWindow
             ]
         } break;
         case actions.REMOVE_WINDOW:{
@@ -54,6 +55,13 @@ export default function Window(state = initialState, action) {
                     old: (action.payload.fullScreen ? { size : item.size, position: item.position } : defaultValues.old)
                 } : item
             );
+        } break;
+        case actions.SET_URL_ALL_WINDOWS : {
+            return state.map(item => ({
+                ...item,
+                url : action.payload,
+                reload: true
+            }));
         } break;
         default:
             return state

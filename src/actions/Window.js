@@ -66,3 +66,11 @@ export const fullScreen = (text) =>{
         })
     }
 }
+export const setURLALLPages = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_URL_ALL_WINDOWS,
+            payload: text
+        })
+    }
+}

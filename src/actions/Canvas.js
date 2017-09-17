@@ -19,3 +19,11 @@ export const resizedWindow = (text) =>{
         })
     }
 }
+export const setURL = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Canvas.SET_URL,
+            payload: text
+        })
+    }
+}

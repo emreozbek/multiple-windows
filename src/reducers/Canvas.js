@@ -24,6 +24,12 @@ export default function Canvas(state = initialState, action) {
                 }
             };
         } break;
+        case actions.SET_URL : {
+            return {
+                ...state,
+                url: action.payload
+            };
+        } break;
         default:
             return state
     }

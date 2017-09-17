@@ -39,10 +39,16 @@ export default class Options extends Component{
                         basic
                         size='mini'
                         color='grey'
+                        icon='search'
+                    />
+                    <Button
+                        basic
+                        size='mini'
+                        color='grey'
                         icon='refresh'
                         loading={this.props.loadingIcon}
-                        onClick={this.props.reloadPage}>
-                    </Button>
+                        onClick={this.props.reloadPage}
+                    />
                     <Button
                         basic
                         size='mini'
@@ -55,8 +61,8 @@ export default class Options extends Component{
                         size='mini'
                         color='grey'
                         icon='close'
-                        onClick={this.props.removeWindow}>
-                    </Button>
+                        onClick={this.props.removeWindow}
+                    />
                 </Button.Group>
                 <WindowMove
                     canvas      = {this.props.canvas}

@@ -86,7 +86,7 @@ export default class Window extends Component{
             this.props.actions.setWindowPosition({
                 id: this.props.options.id,
                 x: 5,
-                y: 5
+                y: this.props.options.position.y
             });
             window.addEventListener('resize', this._resizedWindow);
             window.dispatchEvent(new CustomEvent('resize'));
@@ -107,7 +107,7 @@ export default class Window extends Component{
     resizedWindow(e){
         this.props.actions.setSize({
             id: this.props.options.id,
-            width: e.target.innerWidth - 24,
+            width: e.target.innerWidth - 41,
             height: e.target.innerHeight - 114
         });
     }

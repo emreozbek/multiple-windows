@@ -16,10 +16,9 @@
 
 }
 html, body, .fit, .app{
-  width: 100%; height: 100%; overflow: auto;
+  width: 100%; height: 100%; overflow: auto; background: #f4f3f5;
 }
 .fit{
-  padding-top: 46px;
 }
 .noBackground{background-color: transparent !important; color: #DDD !important;}
 .hidden{display: none;}

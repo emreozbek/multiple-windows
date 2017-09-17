@@ -1,10 +1,20 @@
 
 .header{
-  margin-top: -46px;
+  position: fixed;
+  top:0;
+  z-index: 10;
+  width: 100%;
   padding: 5px;
-  background: #1b1c1d;
-  -webkit-box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.75);
-  box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.75);
+  background: #FFF;
+  -webkit-box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px -1px 3px 0px rgba(0,0,0,0.75);
 
+}
+.sizeInfoLabel{
+  font-size: 12px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
 }

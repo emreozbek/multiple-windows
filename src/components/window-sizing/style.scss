@@ -1,14 +1,29 @@
 
 
-.xCoor, .yCoor, .xyCoor{
-  width: 10px; height: 10px; background: #e9e9e9; position: absolute; z-index: 5; opacity: 0;
+.xCoor, .yCoor, .xyCoor,
+.leftTop, .rightTop, .rightBottom, .leftBottom,
+.xRight, .xLeft, .yTop, .yBottom{
+  width: 10px; height: 10px; position: absolute; z-index: 5; opacity: 0;
   -webkit-transition: all 0.2s;
   -moz-transition: all 0.2s;
   -ms-transition: all 0.2s;
   -o-transition: all 0.2s;
   transition: all 0.2s;
-
 }
+
+.leftTop, .rightBottom{cursor: se-resize;}
+.rightTop, .leftBottom{cursor: ne-resize;}
+.leftTop{ left: 0; top: 0; }
+.rightTop{ right: 0; top: 0; }
+.rightBottom{ right: 0; bottom: 0; }
+.leftBottom{ left: 0; bottom: 0; }
+.xRight, .xLeft{cursor: e-resize; height: 100%; top: 0;}
+.xLeft{left: 0;}
+.xRight{right: 0;}
+.yTop, .yBottom{cursor: s-resize; width: 100%; left: 0;}
+.yTop{top: 0; }
+.yBottom{bottom: 0; }
+
 .xCoor{height: 100%; right: 0; top: 0; cursor: e-resize;}
 .yCoor{width: 100%; left: 0; bottom: 0; cursor: s-resize;}
 .xyCoor{right: 0; bottom: 0; z-index: 10; cursor: se-resize;}

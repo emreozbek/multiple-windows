@@ -1,10 +1,11 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { Button,Popup, Rating } from 'semantic-ui-react'
+import { Button,Dropdown, Input } from 'semantic-ui-react'
 import WindowName from '../window-name'
 import WindowMove from '../window-move'
 import SizingTextbox from '../sizing-textbox'
+import WindowSearch from '../window-search'
 import './style.scss'
 
 export default class Options extends Component{
@@ -21,8 +22,12 @@ export default class Options extends Component{
                 <Button.Group
                     className="upper"
                     size="mini"
-                    floated="right">
+                    floated="right"
+                    color="grey"
+                    basic
+                >
                     <Button
+                        className="slip"
                         basic
                         compact
                         size='mini'
@@ -35,11 +40,9 @@ export default class Options extends Component{
                             setSize={this.props.setSize}
                         />
                     </Button>
-                    <Button
-                        basic
-                        size='mini'
-                        color='grey'
-                        icon='search'
+                    <WindowSearch
+                        url={this.props.options.url}
+                        setURLMyWindow = {this.props.setURLMyWindow}
                     />
                     <Button
                         basic
@@ -77,15 +80,16 @@ export default class Options extends Component{
     }
 }
 Options.propTypes = {
-    options      : PropTypes.object,
-    removeWindow : PropTypes.func,
-    reloadPage   : PropTypes.func,
-    startDrag    : PropTypes.func,
-    stopDrag     : PropTypes.func,
-    setPosition  : PropTypes.func,
-    setWindowName: PropTypes.func,
-    setSize      : PropTypes.func,
-    fullScreen   : PropTypes.func,
-    canvas       : PropTypes.object,
-    loadingIcon  : PropTypes.bool
+    options       : PropTypes.object,
+    removeWindow  : PropTypes.func,
+    reloadPage    : PropTypes.func,
+    startDrag     : PropTypes.func,
+    stopDrag      : PropTypes.func,
+    setPosition   : PropTypes.func,
+    setWindowName : PropTypes.func,
+    setSize       : PropTypes.func,
+    fullScreen    : PropTypes.func,
+    setURLMyWindow: PropTypes.func,
+    canvas        : PropTypes.object,
+    loadingIcon   : PropTypes.bool
 }

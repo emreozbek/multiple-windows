@@ -111,6 +111,12 @@ export default class Window extends Component{
             height: e.target.innerHeight - 114
         });
     }
+    setURLMyWindow(url){
+        this.props.actions.setURLMyWindow({
+            id: this.props.options.id,
+            url
+        });
+    }
     render(){
         return(
             <div
@@ -127,21 +133,64 @@ export default class Window extends Component{
                 <div className="resize">
                     <SizingTool
                         size          = {this.props.options.size}
-                        direction     = "x"
+                        direction     = "xLeft"
                         setSize       = {this.setSize.bind(this)}
                         startResizing = {this.startResizing.bind(this)}
+                        setPosition   = {this.setPosition.bind(this)}
+                        position      = {this.props.options.position}
                         stopResizing  = {this.stopResizing.bind(this)} />
                     <SizingTool
                         size          = {this.props.options.size}
-                        direction     = "y"
+                        direction     = "xRight"
                         setSize       = {this.setSize.bind(this)}
                         startResizing = {this.startResizing.bind(this)}
+                        position      = {this.props.options.position}
                         stopResizing  = {this.stopResizing.bind(this)} />
                     <SizingTool
                         size          = {this.props.options.size}
-                        direction     = "xy"
+                        direction     = "yTop"
+                        setSize       = {this.setSize.bind(this)}
+                        startResizing = {this.startResizing.bind(this)}
+                        setPosition   = {this.setPosition.bind(this)}
+                        position      = {this.props.options.position}
+                        stopResizing  = {this.stopResizing.bind(this)} />
+                    <SizingTool
+                        size          = {this.props.options.size}
+                        direction     = "yBottom"
+                        setSize       = {this.setSize.bind(this)}
+                        startResizing = {this.startResizing.bind(this)}
+                        position      = {this.props.options.position}
+                        stopResizing  = {this.stopResizing.bind(this)} />
+                    <SizingTool
+                        size          = {this.props.options.size}
+                        direction     = "leftTop"
                         startResizing = {this.startResizing.bind(this)}
                         stopResizing  = {this.stopResizing.bind(this)}
+                        setPosition   = {this.setPosition.bind(this)}
+                        position      = {this.props.options.position}
+                        setSize       = {this.setSize.bind(this)} />
+                    <SizingTool
+                        size          = {this.props.options.size}
+                        direction     = "rightTop"
+                        startResizing = {this.startResizing.bind(this)}
+                        stopResizing  = {this.stopResizing.bind(this)}
+                        setPosition   = {this.setPosition.bind(this)}
+                        position      = {this.props.options.position}
+                        setSize       = {this.setSize.bind(this)} />
+                    <SizingTool
+                        size          = {this.props.options.size}
+                        direction     = "rightBottom"
+                        startResizing = {this.startResizing.bind(this)}
+                        stopResizing  = {this.stopResizing.bind(this)}
+                        position      = {this.props.options.position}
+                        setSize       = {this.setSize.bind(this)} />
+                    <SizingTool
+                        size          = {this.props.options.size}
+                        direction     = "leftBottom"
+                        startResizing = {this.startResizing.bind(this)}
+                        stopResizing  = {this.stopResizing.bind(this)}
+                        setPosition   = {this.setPosition.bind(this)}
+                        position      = {this.props.options.position}
                         setSize       = {this.setSize.bind(this)} />
                 </div>
                 <div className="cover"></div>
@@ -156,17 +205,18 @@ export default class Window extends Component{
                     }}
                 />
                 <Options
-                    options={this.props.options}
-                    removeWindow = {this.removeWindow.bind(this)}
-                    reloadPage   = {this.reloadPage.bind(this, true)}
-                    startDrag    = {this.startDrag.bind(this)}
-                    stopDrag     = {this.stopDrag.bind(this)}
-                    setPosition  = {this.setPosition.bind(this)}
-                    setWindowName= {this.setWindowName.bind(this)}
-                    setSize      = {this.setSize.bind(this)}
-                    fullScreen   = {this.fullScreen.bind(this)}
-                    canvas       = {this.props.canvas}
-                    loadingIcon  = {this.state.loadingIcon}
+                    options        = {this.props.options}
+                    removeWindow   = {this.removeWindow.bind(this)}
+                    reloadPage     = {this.reloadPage.bind(this, true)}
+                    startDrag      = {this.startDrag.bind(this)}
+                    stopDrag       = {this.stopDrag.bind(this)}
+                    setPosition    = {this.setPosition.bind(this)}
+                    setWindowName  = {this.setWindowName.bind(this)}
+                    setSize        = {this.setSize.bind(this)}
+                    fullScreen     = {this.fullScreen.bind(this)}
+                    setURLMyWindow = {this.setURLMyWindow.bind(this)}
+                    canvas         = {this.props.canvas}
+                    loadingIcon    = {this.state.loadingIcon}
                 />
             </div>
         )

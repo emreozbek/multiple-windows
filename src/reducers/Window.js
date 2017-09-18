@@ -47,7 +47,6 @@ export default function Window(state = initialState, action) {
             );
         } break;
         case actions.FULLSCREEN_WINDOW : {
-
             return state.map(item =>
                 item.id === action.payload.id ? {
                     ...item,
@@ -62,6 +61,15 @@ export default function Window(state = initialState, action) {
                 url : action.payload,
                 reload: true
             }));
+        } break;
+        case actions.SET_URL_MY_WINDOW : {
+            return state.map(item =>
+                item.id === action.payload.id ? {
+                    ...item,
+                    url: action.payload.url,
+                    reload: true
+                } : item
+            );
         } break;
         default:
             return state

@@ -74,3 +74,11 @@ export const setURLALLPages = (text) =>{
         })
     }
 }
+export const setURLMyWindow = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_URL_MY_WINDOW,
+            payload: text
+        })
+    }
+}

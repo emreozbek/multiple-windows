@@ -16,6 +16,7 @@ class App extends Component{
         super(props);
         window.addEventListener('resize', this.resized.bind(this));
         window.dispatchEvent(new CustomEvent('resize'));
+
     }
     resized(e){
         this.props.canvasActions.resizedWindow({

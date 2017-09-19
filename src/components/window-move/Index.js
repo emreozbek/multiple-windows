@@ -2,6 +2,8 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import {Menu} from 'semantic-ui-react'
+
 import './style.scss'
 export default class WindowMove extends Component{
     constructor(props){
@@ -11,6 +13,7 @@ export default class WindowMove extends Component{
         this.state = {startX: 0, startY: 0};
     }
     startMoving(e){
+        console.log(this.refs.moveTool);
         let rec = this.refs.moveTool.getBoundingClientRect();
         this.setState({
             startX: e.clientX - rec.left,
@@ -33,13 +36,14 @@ export default class WindowMove extends Component{
     }
     render(){
         return (
-            <div
-                ref="moveTool"
-                className="moveTool"
-                onMouseDown={this.startMoving.bind(this)}
-                onDoubleClick = {() => {this.props.fullScreen(!this.props.fullScreenState)}}
-            >
-            </div>
+            <Menu.Item className="moveTool">
+                <div
+                    ref="moveTool"
+                    onMouseDown={this.startMoving.bind(this)}
+                    onDoubleClick = {() => {this.props.fullScreen(!this.props.fullScreenState)}}>
+
+                </div>
+            </Menu.Item>
         )
     }
 }

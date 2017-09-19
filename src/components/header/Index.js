@@ -72,6 +72,20 @@ export default class Header extends Component {
                 }>
                     <Icon name='desktop' color="green"/>
                 </Menu.Item>
+                <Menu.Item
+                    name='tv'
+                    title="Add FullHD 1920 x 1080"
+                    onClick={
+                    this.createNewWindow.bind(this, {
+                        name: 'FullHD',
+                        size: {
+                            width: 1920,
+                            height: 1080
+                        }
+                    })
+                }>
+                    <Icon name='tv' color="green"/>
+                </Menu.Item>
                 <Menu.Item>
                     <Label basic color="grey" className="sizeInfoLabel">
                         Window Size:

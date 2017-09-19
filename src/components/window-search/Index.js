@@ -15,6 +15,7 @@ export default class WindowSearch extends Component {
     }
 
     onChange(e) {
+        console.log(e);
         if (e.charCode == 13) {
             this.props.setURLMyWindow(this.refs.protocol.getSelectedItem().text + e.target.value);
         }
@@ -39,24 +40,26 @@ export default class WindowSearch extends Component {
 
     render() {
         return (
-            <Dropdown simple button icon='search' className='icon'>
+            <Dropdown item simple icon='search'>
                 <Dropdown.Menu>
                     <Input
-                        ref="mySearchInput"
-                        label={
-                                <Dropdown
-                                    simple
-                                    ref="protocol"
-                                    defaultValue={this.protocol}
-                                    options={options}
-                                    onChange={this.changedProtocol.bind(this)} />
-                            }
-                        labelPosition="left"
                         placeholder="enter domain"
-                        name='search'
+                        size="tiny"
+                        ref="mySearchInput"
                         icon='search'
+                        className='search'
                         defaultValue={this.url}
-                        onKeyPress={this.onChange.bind(this)}/>
+                        onKeyPress={this.onChange.bind(this)}
+                        label={
+                            <Dropdown
+                                simple
+                                className="protocolDropdown"
+                                ref="protocol"
+                                defaultValue={this.protocol}
+                                options={options}
+                                onChange={this.changedProtocol.bind(this)} />
+                        }
+                    />
                 </Dropdown.Menu>
             </Dropdown>
         )
@@ -66,3 +69,4 @@ WindowSearch.propTypes = {
     url: PropTypes.string,
     setURLMyWindow: PropTypes.func
 }
+

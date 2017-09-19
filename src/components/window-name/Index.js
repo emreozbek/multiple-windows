@@ -28,11 +28,13 @@ export default class WindowName extends Component {
     render(){
         return(
             <div className='upper nameContainer'>
-                <label className={this.state.change ? '' : 'hidden'}>
+                <label style={{height: 22}} size="mini" className={this.state.change ? '' : 'hidden'}>
                     <Input
+                        style={{width: 80, height: 22, marginLeft: 9, fontSize: 10, fontWeight: 'bold'}}
                         inverted
+                        transparent
                         ref="windowNameTextbox"
-                        size="mini"
+                        size="tiny"
                         icon='window maximize'
                         iconPosition='left'
                         className="windowNameInput"
@@ -41,6 +43,7 @@ export default class WindowName extends Component {
                     />
                 </label>
                 <Label
+                    size="mini"
                     className={this.state.change ? 'hidden' : ''}
                     color="black"
                     onClick={

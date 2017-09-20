@@ -22,6 +22,7 @@ export const defaultValues = {
     },
     reload: false,
     fullScreen: false,
+    clicked: false,
     url  : "http://www.emreozbek.net"
 }
 

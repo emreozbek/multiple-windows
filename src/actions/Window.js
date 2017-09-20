@@ -82,3 +82,11 @@ export const setURLMyWindow = (text) =>{
         })
     }
 }
+export const setClickedWindow = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_CLICKED_WINDOW,
+            payload: text
+        })
+    }
+}

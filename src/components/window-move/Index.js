@@ -13,7 +13,6 @@ export default class WindowMove extends Component{
         this.state = {startX: 0, startY: 0};
     }
     startMoving(e){
-        console.log(this.refs.moveTool);
         let rec = this.refs.moveTool.getBoundingClientRect();
         this.setState({
             startX: e.clientX - rec.left,

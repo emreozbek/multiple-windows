@@ -25,8 +25,19 @@
     -moz-box-shadow    : 0px 2px 12px 3px rgba(0,0,0,0.5);
     box-shadow         : 0px 2px 12px 3px rgba(0,0,0,0.5);
     .cover{display: block;}
+    .positionLabel{display: block}
   }
   .resize{
     width: 0; height: 0;
+  }
+  &.clicked{
+    background: #a5673f;
+    z-index: 99 !important;
+  }
+  .positionLabel{
+    position: absolute;
+    top: 51px;
+    left: 12px;
+    display: none;
   }
 }

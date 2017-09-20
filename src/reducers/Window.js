@@ -71,6 +71,14 @@ export default function Window(state = initialState, action) {
                 } : item
             );
         } break;
+        case actions.SET_CLICKED_WINDOW : {
+            return state.map(item => {
+                if (item.id === action.payload.id)
+                    return {...item, clicked: action.payload.state}
+                else
+                    return {...item, clicked: false}
+            });
+        } break;
         default:
             return state
     }

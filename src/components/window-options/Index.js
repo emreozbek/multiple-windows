@@ -17,7 +17,8 @@ export default class Options extends Component {
         return (
             <div className="options">
                 <Menu size="mini" icon inverted
-                      className={this.props.options.size.width < this.responsive ? 'hideClass' : ''}>
+                      color={this.props.options.clicked ? 'brown' : 'black'}
+                      className={this.props.options.size.width <= this.responsive ? 'hideClass' : ''}>
                     <WindowMove
                         canvas={this.props.canvas}
                         startDrag={this.props.startDrag}
@@ -29,7 +30,9 @@ export default class Options extends Component {
                     <Menu.Item >
                         <WindowName
                             name={this.props.options.name}
-                            setWindowName={this.props.setWindowName}/>
+                            setWindowName={this.props.setWindowName}
+                            clicked={this.props.options.clicked}
+                        />
                     </Menu.Item>
                     <Menu.Menu position='right'>
                         <Menu.Item >
@@ -64,11 +67,14 @@ export default class Options extends Component {
                     </Menu.Menu>
                 </Menu>
                 <Menu size="mini" icon inverted
+                      color={this.props.options.clicked ? 'brown' : 'black'}
                       className={this.props.options.size.width > this.responsive ? 'hideClass' : 'responsiveMenu'}>
                     <Menu.Item >
                         <WindowName
                             name={this.props.options.name}
-                            setWindowName={this.props.setWindowName}/>
+                            setWindowName={this.props.setWindowName}
+                            clicked={this.props.options.clicked}
+                        />
                     </Menu.Item>
                     <Menu.Menu position='right'>
                         <WindowMove

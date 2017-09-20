@@ -15,7 +15,6 @@ export default class WindowSearch extends Component {
     }
 
     onChange(e) {
-        console.log(e);
         if (e.charCode == 13) {
             this.props.setURLMyWindow(this.refs.protocol.getSelectedItem().text + e.target.value);
         }

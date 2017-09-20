@@ -30,9 +30,8 @@ export default class WindowName extends Component {
             <div className='upper nameContainer'>
                 <label style={{height: 22}} size="mini" className={this.state.change ? '' : 'hidden'}>
                     <Input
-                        style={{width: 80, height: 22, marginLeft: 9, fontSize: 10, fontWeight: 'bold'}}
                         inverted
-                        transparent
+                        color={this.props.clicked ? "brown" : "black"}
                         ref="windowNameTextbox"
                         size="tiny"
                         icon='window maximize'
@@ -43,9 +42,9 @@ export default class WindowName extends Component {
                     />
                 </label>
                 <Label
+                    color={this.props.clicked ? "brown" : "black"}
                     size="mini"
-                    className={this.state.change ? 'hidden' : ''}
-                    color="black"
+                    className={'windowNameLabel ' + (this.state.change ? 'hidden' : '')}
                     onClick={
                         () => {
                             this.setState({change: true});
@@ -64,5 +63,6 @@ export default class WindowName extends Component {
 }
 WindowName.propTypes = {
     name: PropTypes.string,
-    setWindowName: PropTypes.func
+    setWindowName: PropTypes.func,
+    clicked: PropTypes.bool
 }

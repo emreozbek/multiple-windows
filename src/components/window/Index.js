@@ -2,6 +2,8 @@
 
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import {Label} from 'semantic-ui-react'
+
 import './style.scss'
 
 import SizingTool from '../window-sizing'
@@ -26,10 +28,13 @@ export default class Window extends Component{
     startResizing(){
         if(!this.props.options.fullScreen)
             this.refs.myWindow.classList.add("resizing");
+        this.props.sizingOnCanvas(true);
+
     }
     stopResizing(){
         if(!this.props.options.fullScreen)
             this.refs.myWindow.classList.remove("resizing");
+        this.props.sizingOnCanvas(false);
     }
     setSize(size){
         if(!this.props.options.fullScreen){
@@ -117,11 +122,17 @@ export default class Window extends Component{
             url
         });
     }
+    thisSelected(elements, e){
+        this.props.actions.setClickedWindow({
+            id: this.props.options.id,
+            state: true
+        });
+    }
     render(){
         return(
             <div
                 ref="myWindow"
-                className='windowFrame'
+                className={'windowFrame ' + (this.props.options.clicked ? 'clicked' : '')}
                 onMouseOver={this.hoverState.bind(this)}
                 onMouseOut={this.hoverState.bind(this)}
                 style={{
@@ -130,6 +141,7 @@ export default class Window extends Component{
                     zIndex: this.state.zIndex
                 }}
             >
+                <Label color="red" size="mini" className="positionLabel">{this.props.options.position.x + " x " + this.props.options.position.y}</Label>
                 <div className="resize">
                     <SizingTool
                         size          = {this.props.options.size}
@@ -226,10 +238,12 @@ export default class Window extends Component{
             window.addEventListener('resize', this._resizedWindow);
             window.dispatchEvent(new CustomEvent('resize'));
         }
+        this.refs.myWindow.addEventListener('mousedown', this.thisSelected.bind(this));
     }
 }
 Window.propTypes = {
     options: PropTypes.object,
     actions: PropTypes.object,
-    canvas : PropTypes.object
+    canvas : PropTypes.object,
+    sizingOnCanvas : PropTypes.func
 }

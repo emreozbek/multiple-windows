@@ -1,9 +1,16 @@
 
 .windowNameInput{
-  width: 130px;
-  height: 32px;
+  width: 120px !important;
+  height: 22px !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
   color: var(--inputColor) !important;
   &:focus{
     color: var(--inputFocusColor) !important;
   }
+}
+
+.windowNameLabel{
+  border: none !important;
+  margin-left: 0 !important;
 }

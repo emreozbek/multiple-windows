@@ -3,4 +3,11 @@
   position: absolute;
   top:46px;
   min-height: 6000px;
+  width: 100%;
+}
+.sizingOnCanvas{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 98;
 }

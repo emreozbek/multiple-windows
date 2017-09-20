@@ -11,7 +11,7 @@ const defaultValues = {
     window: {
         width: 0,
         height: 0
-    }
+    },
 };
 
 export const initialState = localStorage.getItem('canvas') == null ? defaultValues : JSON.parse(localStorage.getItem('canvas'));

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Button, Icon, Menu, Label, Input} from 'semantic-ui-react'
+import {Dropdown, Icon, Menu, Label} from 'semantic-ui-react'
 import HeaderSearch from '../header-search'
 import './style.scss'
 
@@ -11,6 +11,10 @@ export default class Header extends Component {
 
     createNewWindow(obj) {
         obj.url = this.props.canvasStore.url;
+        obj.position = {
+            x: 10,
+            y: window.scrollY + 10
+        };
         this.props.createWindow(obj);
     }
 
@@ -31,6 +35,7 @@ export default class Header extends Component {
                 }>
                     <Icon name='mobile' color="green"/>
                 </Menu.Item>
+                
                 <Menu.Item
                     name='tablet'
                     title="Add Tablet 480 x 800"

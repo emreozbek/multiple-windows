@@ -1,5 +1,5 @@
 
-export const initialState = {
+const defaultValues = {
     url: "http://www.google.com",
     xPosition: 0,
     yPosition: 46,
@@ -14,3 +14,4 @@ export const initialState = {
     }
 };
 
+export const initialState = localStorage.getItem('canvas') == null ? defaultValues : JSON.parse(localStorage.getItem('canvas'));

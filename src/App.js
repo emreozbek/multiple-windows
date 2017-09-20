@@ -49,6 +49,7 @@ class App extends Component{
     }
     componentWillReceiveProps(props){
         localStorage.setItem('windows', JSON.stringify(props.windowsStore));
+        localStorage.setItem('canvas', JSON.stringify(props.canvasStore));
     }
 }
 App.propTypes = {

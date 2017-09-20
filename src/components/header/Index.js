@@ -10,6 +10,7 @@ export default class Header extends Component {
     }
 
     createNewWindow(obj) {
+        obj.url = this.props.canvasStore.url;
         this.props.createWindow(obj);
     }
 
@@ -106,6 +107,16 @@ export default class Header extends Component {
                                 (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) +
                                 "x" +
                                 (this.props.canvasStore.window.height - this.props.canvasStore.yPosition)
+                            }
+                        </Label.Detail>
+                    </Label>
+                </Menu.Item>
+                <Menu.Item>
+                    <Label basic color="grey" className="sizeInfoLabel">
+                        Total Window(s):
+                        <Label.Detail>
+                            {
+                                this.props.windowStore.length
                             }
                         </Label.Detail>
                     </Label>

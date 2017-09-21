@@ -141,7 +141,7 @@ export default class Window extends Component{
                     zIndex: this.state.zIndex
                 }}
             >
-                <Label color="red" size="mini" className="positionLabel">{this.props.options.position.x + " x " + this.props.options.position.y}</Label>
+                <Label color="red" size="tiny" className="positionLabel">{this.props.options.position.x + " x " + this.props.options.position.y}</Label>
                 <div className="resize">
                     <SizingTool
                         size          = {this.props.options.size}

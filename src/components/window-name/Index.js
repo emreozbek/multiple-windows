@@ -31,7 +31,7 @@ export default class WindowName extends Component {
                 <label style={{height: 22}} size="mini" className={this.state.change ? '' : 'hidden'}>
                     <Input
                         inverted
-                        color={this.props.clicked ? "brown" : "black"}
+                        color={this.props.clicked ? "yellow" : "black"}
                         ref="windowNameTextbox"
                         size="tiny"
                         icon='window maximize'
@@ -42,7 +42,7 @@ export default class WindowName extends Component {
                     />
                 </label>
                 <Label
-                    color={this.props.clicked ? "brown" : "black"}
+                    color={this.props.clicked ? "yellow" : "black"}
                     size="mini"
                     className={'windowNameLabel ' + (this.state.change ? 'hidden' : '')}
                     onClick={

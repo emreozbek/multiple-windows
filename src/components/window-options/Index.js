@@ -17,7 +17,7 @@ export default class Options extends Component {
         return (
             <div className="options">
                 <Menu size="mini" icon inverted
-                      color={this.props.options.clicked ? 'brown' : 'black'}
+                      color={this.props.options.clicked ? 'yellow' : 'black'}
                       className={this.props.options.size.width <= this.responsive ? 'hideClass' : ''}>
                     <WindowMove
                         canvas={this.props.canvas}
@@ -67,7 +67,7 @@ export default class Options extends Component {
                     </Menu.Menu>
                 </Menu>
                 <Menu size="mini" icon inverted
-                      color={this.props.options.clicked ? 'brown' : 'black'}
+                      color={this.props.options.clicked ? 'yellow' : 'black'}
                       className={this.props.options.size.width > this.responsive ? 'hideClass' : 'responsiveMenu'}>
                     <Menu.Item >
                         <WindowName

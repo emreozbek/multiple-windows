@@ -1,7 +1,7 @@
 
 .options{
   width: 100%;
-  height: 46px;
+  height: 45px;
   position: absolute;
   top: 0;
   left: 0;
@@ -14,6 +14,7 @@
   .upper{
     position: relative; z-index: 10;
   }
+  & > .menu{margin: 0 !important; }
 }
 .window:hover{
   .options{
@@ -28,5 +29,5 @@
 .hideClass{display: none !important;}
 .responsiveMenu{
   margin-top: 0 !important;
-  min-height: 46px !important;
+  min-height: 45px !important;
 }

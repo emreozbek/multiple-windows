@@ -23,9 +23,10 @@ export default class Options extends Component {
     }
     render() {
         this.menuList = [{
-            title : <Menu.Item ><SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} /></Menu.Item>
+            icon : 'maximize',
+            title : 0
         },{
-            title: <WindowSearch url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />
+            title: 1
         },{
             icon : "retweet",
             onClick : this.reverseToSizes.bind(this),
@@ -69,13 +70,24 @@ export default class Options extends Component {
                     <Menu.Menu position='right' className={this.props.options.size.width <= this.responsive ? 'hideClass' : ''}>
                         {
                             this.menuList.map(function (item, index) {
-                                if(typeof item.title === 'string'){
-                                    return <Menu.Item key={index} title={item.title} onClick={item.onClick}>
-                                        <Icon name={item.icon} loading={item.loading} />
-                                    </Menu.Item>
-                                }else{
-                                    const Comp = item.title;
-                                    return Comp;
+                                switch (item.title){
+                                    case 0: {
+                                        return <Menu.Item key={index}><SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} /></Menu.Item>
+                                    } break;
+                                    case 1: {
+                                        return (
+                                            <Dropdown key={index} item simple icon='search'>
+                                                <Dropdown.Menu>
+                                                    <WindowSearch key={index} url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />
+                                                </Dropdown.Menu>
+                                            </Dropdown>);
+                                    } break;
+                                    default : {
+                                        return (
+                                            <Menu.Item key={index} title={item.title} onClick={item.onClick}>
+                                                <Icon key={index} name={item.icon} loading={item.loading} />
+                                            </Menu.Item>);
+                                    }break;
                                 }
                             }.bind(this))
                         }
@@ -83,14 +95,20 @@ export default class Options extends Component {
                     <Menu.Menu position='right' className={this.props.options.size.width <= this.responsive ? '' : 'hideClass'}>
                         <Dropdown simple item icon="content">
                             <Dropdown.Menu>
-                                {/*
+                                {
                                     this.menuList.map(function (item, index) {
-                                        if(typeof item.title === 'string' || item.title){
-                                            return <Dropdown.Item key={index} icon={item.icon} text={item.title} onClick={item.onClick}/>
-                                        }else
-                                            return false;
+                                        switch (item.title){
+                                            case 0: {
+                                                return <Dropdown.Item key={index} icon={item.icon} text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} onClick={item.onClick}/>
+                                            } break;
+                                            case 1: {
+                                                return <Dropdown.Item key={index} icon={item.icon} text={<WindowSearch key={index} url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />} onClick={item.onClick}/>
+                                            } break;
+                                            default : {
+                                                return <Dropdown.Item key={index} icon={item.icon} text={item.title} onClick={item.onClick} />
+                                            }break;
+                                        }
                                     }.bind(this))
-                                    */
                                 }
                             </Dropdown.Menu>
                         </Dropdown>

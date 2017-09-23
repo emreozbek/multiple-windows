@@ -90,7 +90,6 @@ export default class Header extends Component {
                                         return (
                                             <Dropdown.Item
                                                 key={i}
-                                                icon={item.icon}
                                                 text={list.width + " x " + list.height}
                                                 title={list.title}
                                                 onClick={
@@ -112,24 +111,13 @@ export default class Header extends Component {
                 <Menu.Item>
                     <Label basic color="grey" className="sizeInfoLabel">
                         Window Size:
-                        <Label.Detail>
-                            {
-                                this.props.canvasStore.window.width +
-                                "x" +
-                                this.props.canvasStore.window.height
-                            }
-                        </Label.Detail>
+                        <Label.Detail> { this.props.canvasStore.window.width + "x" + this.props.canvasStore.window.height } </Label.Detail>
                     </Label>
                 </Menu.Item>
                 <Menu.Item>
                     <Label basic color="grey" className="sizeInfoLabel">
                         Canvas Size:
-                        <Label.Detail>
-                            {
-                                (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) +
-                                "x" +
-                                (this.props.canvasStore.window.height - this.props.canvasStore.yPosition)
-                            }
+                        <Label.Detail> { (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition) }
                         </Label.Detail>
                     </Label>
                 </Menu.Item>

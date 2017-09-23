@@ -39,28 +39,24 @@ export default class WindowSearch extends Component {
 
     render() {
         return (
-            <Dropdown item simple icon='search'>
-                <Dropdown.Menu>
-                    <Input
-                        placeholder="enter domain"
-                        size="tiny"
-                        ref="mySearchInput"
-                        icon='search'
-                        className='search'
-                        defaultValue={this.url}
-                        onKeyPress={this.onChange.bind(this)}
-                        label={
-                            <Dropdown
-                                simple
-                                className="protocolDropdown"
-                                ref="protocol"
-                                defaultValue={this.protocol}
-                                options={options}
-                                onChange={this.changedProtocol.bind(this)} />
-                        }
-                    />
-                </Dropdown.Menu>
-            </Dropdown>
+                <Input
+                    placeholder="enter domain"
+                    size="tiny"
+                    ref="mySearchInput"
+                    icon='search'
+                    className='search'
+                    defaultValue={this.url}
+                    onKeyPress={this.onChange.bind(this)}
+                    label={
+                        <Dropdown
+                            simple
+                            className="protocolDropdown"
+                            ref="protocol"
+                            defaultValue={this.protocol}
+                            options={options}
+                            onChange={this.changedProtocol.bind(this)} />
+                    }
+                />
         )
     }
 }

@@ -215,6 +215,7 @@ export default class Window extends Component{
                         width: this.props.options.size.width,
                         height: this.props.options.size.height
                     }}
+                    element={this.props.canvas.element}
                 />
                 <Options
                     options        = {this.props.options}

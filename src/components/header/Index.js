@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {Dropdown, Icon, Menu, Label} from 'semantic-ui-react'
+import {Dropdown, Icon, Menu, Button} from 'semantic-ui-react'
 import HeaderSearch from '../header-search'
+import FocusToElement from '../focus-to-element'
 import './style.scss'
 
 const menuList = [{
@@ -69,6 +70,7 @@ const menuList = [{
 export default class Header extends Component {
     constructor(props) {
         super(props);
+        this.info = [];
     }
     createNewWindow(obj) {
         obj.url = this.props.canvasStore.url;
@@ -79,6 +81,20 @@ export default class Header extends Component {
         this.props.createWindow(obj);
     }
     render() {
+        this.info = [
+            {
+                key: 'window',
+                icon: 'maximize',
+                text: this.props.canvasStore.window.width + "x" + this.props.canvasStore.window.height, value: 'window', description: 'Window Size'},{
+                key: 'canvas',
+                icon: 'window maximize',
+                text: (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition), value: 'canvas' },{
+                key: 'block layout',
+                icon: 'block layout',
+                text: this.props.windowStore.length,
+                value: 'block layout'
+            }
+        ];
         return (
             <Menu icon size="small" fixed="top">
                 {
@@ -108,26 +124,29 @@ export default class Header extends Component {
                         </Dropdown>)
                     }.bind(this))
                 }
-                <Menu.Item>
-                    <Label basic color="grey" className="sizeInfoLabel">
-                        Window Size:
-                        <Label.Detail> { this.props.canvasStore.window.width + "x" + this.props.canvasStore.window.height } </Label.Detail>
-                    </Label>
-                </Menu.Item>
-                <Menu.Item>
-                    <Label basic color="grey" className="sizeInfoLabel">
-                        Canvas Size:
-                        <Label.Detail> { (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition) }
-                        </Label.Detail>
-                    </Label>
-                </Menu.Item>
-                <Menu.Item>
-                    <Label basic color="grey" className="sizeInfoLabel">
-                        Total Window(s):
-                        <Label.Detail>{ this.props.windowStore.length }</Label.Detail>
-                    </Label>
-                </Menu.Item>
+                <Dropdown item>
+                    <Dropdown.Menu>
+                        <Dropdown.Item
+                            text='dd'
+                            value={ (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition) }
+                            description="Canvas Size" />
+                        <Dropdown.Item
+                            text={ this.props.windowStore.length }
+                            value={ this.props.windowStore.length }
+                            description="Total Windows" />
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown size="mini" multiple inline item defaultValue="window" options={this.info} floating button className='icon'  />
+
+
+
                 <Menu.Menu position="right">
+                    <Menu.Item className="focusItem">
+                        <FocusToElement
+                            focusToElement={this.props.focusToElement}
+                            element={this.props.canvasStore.element}
+                        />
+                    </Menu.Item>
                     <HeaderSearch
                         url={this.props.canvasStore.url}
                         setURLALLWindows={this.props.setURLALLWindows}
@@ -152,10 +171,11 @@ export default class Header extends Component {
     }
 }
 Header.propTypes = {
-    createWindow: PropTypes.func,
-    reloadAllPages: PropTypes.func,
-    setURLALLWindows: PropTypes.func,
-    setCanvasURL: PropTypes.func,
-    windowStore: PropTypes.array,
-    canvasStore: PropTypes.object
+    createWindow     : PropTypes.func,
+    reloadAllPages   : PropTypes.func,
+    setURLALLWindows : PropTypes.func,
+    setCanvasURL     : PropTypes.func,
+    focusToElement   : PropTypes.func,
+    windowStore      : PropTypes.array,
+    canvasStore      : PropTypes.object
 }

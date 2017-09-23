@@ -25,6 +25,9 @@
     -moz-box-shadow    : 0px 5px 17px -1px rgba(0, 0, 0, 0.4);
     box-shadow         : 0px 5px 17px -1px rgba(0, 0, 0, 0.4);
     .cover{display: block;}
+
+  }
+  &.moving{
     .positionLabel{display: block}
   }
   .resize{

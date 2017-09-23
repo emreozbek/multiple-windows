@@ -27,3 +27,11 @@ export const setURL = (text) =>{
         })
     }
 }
+export const focusToElement = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Canvas.FOCUS_TO_ELEMENT,
+            payload: text
+        })
+    }
+}

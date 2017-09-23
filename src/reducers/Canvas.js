@@ -30,6 +30,12 @@ export default function Canvas(state = initialState, action) {
                 url: action.payload
             };
         } break;
+        case actions.FOCUS_TO_ELEMENT : {
+            return {
+                ...state,
+                element: action.payload
+            };
+        } break;
         default:
             return state
     }

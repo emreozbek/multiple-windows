@@ -32,6 +32,7 @@ class App extends Component{
                     reloadAllPages={this.props.windowActions.reloadAllPages}
                     setURLALLWindows={this.props.windowActions.setURLALLPages}
                     setCanvasURL = {this.props.canvasActions.setURL}
+                    focusToElement={this.props.canvasActions.focusToElement}
                     windowStore={this.props.windowsStore}
                     canvasStore={this.props.canvasStore}
                 />

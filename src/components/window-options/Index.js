@@ -93,17 +93,19 @@ export default class Options extends Component {
                         }
                     </Menu.Menu>
                     <Menu.Menu position='right' className={this.props.options.size.width <= this.responsive ? '' : 'hideClass'}>
+                        <Dropdown item simple icon='search'>
+                            <Dropdown.Menu>
+                                <WindowSearch url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />
+                            </Dropdown.Menu>
+                        </Dropdown>
+                        <Dropdown.Item text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} />
                         <Dropdown simple item icon="content">
                             <Dropdown.Menu>
                                 {
                                     this.menuList.map(function (item, index) {
                                         switch (item.title){
-                                            case 0: {
-                                                return <Dropdown.Item key={index} icon={item.icon} text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} onClick={item.onClick}/>
-                                            } break;
-                                            case 1: {
-                                                return <Dropdown.Item key={index} icon={item.icon} text={<WindowSearch key={index} url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />} onClick={item.onClick}/>
-                                            } break;
+                                            case 0:
+                                            case 1: return false; break;
                                             default : {
                                                 return <Dropdown.Item key={index} icon={item.icon} text={item.title} onClick={item.onClick} />
                                             }break;

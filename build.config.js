@@ -1,9 +1,7 @@
 
-
-var port = 3000;
+var webpack = require('webpack');
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:' + port,
         "./src/Index.js"
     ],
     output: {
@@ -30,19 +28,19 @@ module.exports = {
             }
         },{
             test : /\.(eot|otf|woff|woff2|ttf|svg|jpg|jpeg|png|gif)(\?\S*)?$/,
-            loader: 'file-loader?name=/[path][name].[ext]',
+            loader: 'file-loader?name=build/[name].[ext]',
         }]
     },
-    devServer: {
-        contentBase: './',
-        watchContentBase: true,
-        port: port,
-        inline: true,
-        headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization, x-id, Content-Length, X-Requested-With",
-            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS"
-        }
-    }
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress:{
+                warnings: false
+            }
+        })
+    ]
 }

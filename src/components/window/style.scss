@@ -28,7 +28,7 @@
 
   }
   &.moving{
-    .positionLabel{display: block}
+    .positionLabel{display: block !important;}
   }
   .resize{
     width: 0; height: 0;
@@ -41,6 +41,6 @@
     position: absolute;
     top: 51px;
     left: 12px;
-    display: none;
+    display: none !important;
   }
 }

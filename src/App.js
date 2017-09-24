@@ -4,10 +4,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import 'semantic-ui-css/semantic.min.css'
 import Canvas from './components/canvas/Index'
 import Header from './components/header/Index'
 import * as Actions from './actions'
+
+import 'semantic-ui-css/semantic.min.css'
 import '../css/style.scss'
 
 

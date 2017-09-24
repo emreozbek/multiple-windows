@@ -116,10 +116,11 @@ export default class Window extends Component{
             height: e.target.innerHeight - 114
         });
     }
-    setURLMyWindow(url){
+    setURLMyWindow(data){
         this.props.actions.setURLMyWindow({
             id: this.props.options.id,
-            url
+            url: data.url,
+            reload: data.reload
         });
     }
     thisSelected(elements, e){
@@ -215,6 +216,7 @@ export default class Window extends Component{
                         width: this.props.options.size.width,
                         height: this.props.options.size.height
                     }}
+                    setURLMyWindow = {this.setURLMyWindow.bind(this)}
                     element={this.props.canvas.element}
                 />
                 <Options
@@ -230,6 +232,7 @@ export default class Window extends Component{
                     setURLMyWindow = {this.setURLMyWindow.bind(this)}
                     canvas         = {this.props.canvas}
                     loadingIcon    = {this.state.loadingIcon}
+                    cloneToAllWindows = {this.props.actions.cloneToAllWindows}
                 />
             </div>
         )

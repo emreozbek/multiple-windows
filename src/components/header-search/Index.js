@@ -19,6 +19,7 @@ export default class HeaderSearch extends Component {
         return (
             <Menu.Item>
                 <Input size="mini"
+                       ref="mySearch"
                        className='icon searchInput'
                        icon='search'
                        placeholder='Search...'
@@ -28,6 +29,9 @@ export default class HeaderSearch extends Component {
                 />
             </Menu.Item>
         )
+    }
+    componentWillReceiveProps(props){
+        this.refs.mySearch.inputRef.value = props.url;
     }
 }
 HeaderSearch.propTypes = {

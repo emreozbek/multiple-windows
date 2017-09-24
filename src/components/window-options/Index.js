@@ -30,7 +30,7 @@ export default class Options extends Component {
         },{
             icon : "retweet",
             onClick : this.reverseToSizes.bind(this),
-            title : 'Reverse to Window',
+            title : 'Reverse to Sizes',
             loading : false
         },{
             icon : "refresh",
@@ -76,9 +76,14 @@ export default class Options extends Component {
                                     } break;
                                     case 1: {
                                         return (
-                                            <Dropdown key={index} item simple icon='search'>
+                                            <Dropdown key={index} item icon='search' simple>
                                                 <Dropdown.Menu>
-                                                    <WindowSearch key={index} url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />
+                                                    <WindowSearch
+                                                        key={index}
+                                                        url={this.props.options.url}
+                                                        setURLMyWindow={this.props.setURLMyWindow}
+                                                        cloneToAllWindows={this.props.cloneToAllWindows}
+                                                    />
                                                 </Dropdown.Menu>
                                             </Dropdown>);
                                     } break;
@@ -93,9 +98,13 @@ export default class Options extends Component {
                         }
                     </Menu.Menu>
                     <Menu.Menu position='right' className={this.props.options.size.width <= this.responsive ? '' : 'hideClass'}>
-                        <Dropdown item simple icon='search'>
+                        <Dropdown item icon='search' simple>
                             <Dropdown.Menu>
-                                <WindowSearch url={this.props.options.url} setURLMyWindow={this.props.setURLMyWindow} />
+                                <WindowSearch
+                                    url={this.props.options.url}
+                                    setURLMyWindow={this.props.setURLMyWindow}
+                                    cloneToAllWindows={this.props.cloneToAllWindows}
+                                />
                             </Dropdown.Menu>
                         </Dropdown>
                         <Dropdown.Item text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} />
@@ -131,6 +140,7 @@ Options.propTypes = {
     setSize: PropTypes.func,
     fullScreen: PropTypes.func,
     setURLMyWindow: PropTypes.func,
+    cloneToAllWindows: PropTypes.func,
     canvas: PropTypes.object,
     loadingIcon: PropTypes.bool
 }

@@ -13,10 +13,12 @@ export default class WindowSearch extends Component {
         super(props);
         this.splitURL(props.url);
     }
-
     onChange(e) {
         if (e.charCode == 13) {
-            this.props.setURLMyWindow(this.refs.protocol.getSelectedItem().text + e.target.value);
+            this.props.setURLMyWindow({
+                url: this.refs.protocol.getSelectedItem().text + e.target.value,
+                reload: true
+            });
         }
     }
 
@@ -30,13 +32,19 @@ export default class WindowSearch extends Component {
     }
 
     changedProtocol(e, data) {
-        this.props.setURLMyWindow(data.value + this.refs.mySearchInput.inputRef.value);
+        this.props.setURLMyWindow({
+            url : data.value + this.refs.mySearchInput.inputRef.value,
+            reload: true
+        });
     }
 
     componentWillReceiveProps(props) {
         this.splitURL(props.url);
+        this.refs.mySearchInput.inputRef.value = this.url;
     }
-
+    setURL(){
+        this.props.cloneToAllWindows(this.refs.protocol.getSelectedItem().text + this.refs.mySearchInput.inputRef.value);
+    }
     render() {
         return (
                 <Input
@@ -44,7 +52,7 @@ export default class WindowSearch extends Component {
                     size="tiny"
                     ref="mySearchInput"
                     icon='search'
-                    className='search'
+                    className='search windowSearch'
                     defaultValue={this.url}
                     onKeyPress={this.onChange.bind(this)}
                     label={
@@ -56,12 +64,21 @@ export default class WindowSearch extends Component {
                             options={options}
                             onChange={this.changedProtocol.bind(this)} />
                     }
+                    action={{
+                        className:'cloneButton',
+                        size: 'mini',
+                        color: 'green',
+                        icon: 'check',
+                        title: 'Apply To All Windows',
+                        onClick: this.setURL.bind(this)
+                    }}
                 />
         )
     }
 }
 WindowSearch.propTypes = {
     url: PropTypes.string,
-    setURLMyWindow: PropTypes.func
+    setURLMyWindow: PropTypes.func,
+    cloneToAllWindows: PropTypes.func
 }
 

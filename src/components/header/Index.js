@@ -81,20 +81,25 @@ export default class Header extends Component {
         this.props.createWindow(obj);
     }
     render() {
-        this.info = [
-            {
-                key: 'window',
-                icon: 'maximize',
-                text: this.props.canvasStore.window.width + "x" + this.props.canvasStore.window.height, value: 'window', description: 'Window Size'},{
-                key: 'canvas',
-                icon: 'window maximize',
-                text: (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition), value: 'canvas' },{
-                key: 'block layout',
-                icon: 'block layout',
-                text: this.props.windowStore.length,
-                value: 'block layout'
-            }
-        ];
+        this.info = [{
+            key: 'window',
+            icon: 'maximize',
+            text: this.props.canvasStore.window.width + "x" + this.props.canvasStore.window.height,
+            title: 'Winddow Size',
+            value: 'window'
+        },{
+            key: 'canvas',
+            icon: 'window maximize',
+            text: (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition),
+            title: 'Canvas Size',
+            value: 'canvas'
+        },{
+            key: 'block layout',
+            icon: 'block layout',
+            text: this.props.windowStore.length,
+            title: 'Total Windows',
+            value: 'block layout'
+        }];
         return (
             <Menu icon size="small" fixed="top">
                 {
@@ -124,22 +129,7 @@ export default class Header extends Component {
                         </Dropdown>)
                     }.bind(this))
                 }
-                <Dropdown item>
-                    <Dropdown.Menu>
-                        <Dropdown.Item
-                            text='dd'
-                            value={ (this.props.canvasStore.window.width - this.props.canvasStore.xPosition) + "x" + (this.props.canvasStore.window.height - this.props.canvasStore.yPosition) }
-                            description="Canvas Size" />
-                        <Dropdown.Item
-                            text={ this.props.windowStore.length }
-                            value={ this.props.windowStore.length }
-                            description="Total Windows" />
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown size="mini" multiple inline item defaultValue="window" options={this.info} floating button className='icon'  />
-
-
-
+                <Dropdown size="mini" item defaultValue="window" options={this.info} />
                 <Menu.Menu position="right">
                     <Menu.Item className="focusItem">
                         <FocusToElement

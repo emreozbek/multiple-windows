@@ -9,6 +9,7 @@ export default class Canvas extends Component{
         this.state = {
             sizing: false
         };
+        console.log(props);
     }
     componentDidMount(){
         this.props.actions.canvas.setPosition({
@@ -27,6 +28,10 @@ export default class Canvas extends Component{
     sizingOnCanvas(state){
         this.setState({sizing: state});
     }
+    cloneToAllWindows(url){
+        this.props.actions.window.setURLALLPages(url);
+        this.props.actions.canvas.setURL(url);
+    }
     render(){
         return(
             <div className="canvas" ref="myCanvas">
@@ -38,7 +43,7 @@ export default class Canvas extends Component{
                                 key={item.id}
                                 options={item}
                                 canvas={this.props.store.canvas}
-                                actions={this.props.actions.window}
+                                actions={{...this.props.actions.window, cloneToAllWindows: this.cloneToAllWindows.bind(this)}}
                                 sizingOnCanvas={this.sizingOnCanvas.bind(this)}
                             />
                         )

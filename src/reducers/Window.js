@@ -67,7 +67,7 @@ export default function Window(state = initialState, action) {
                 item.id === action.payload.id ? {
                     ...item,
                     url: action.payload.url,
-                    reload: true
+                    reload: action.payload.reload
                 } : item
             );
         } break;

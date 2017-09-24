@@ -6,3 +6,15 @@
     width: 102% !important;
   }
 }
+.windowSearch{
+  input{
+    width: 250px;
+  }
+  .icon.search{right: 34px !important;}
+  .cloneButton{
+    border-radius:0 3px 3px 0 !important;
+    -moz-border-radius: 0 3px 3px 0 !important;;
+    -webkit-border-radius: 0 3px 3px 0 !important;
+    .icon{padding-top: 0 !important;}
+  }
+}

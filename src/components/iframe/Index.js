@@ -32,7 +32,7 @@ export default class Iframe extends Component{
 
     }
     getURL(){
-        return this.props.url + "?v=" + Math.random();
+        return this.props.url;
     }
     focusToElement(){
         let str = this.state.element.slice(1, this.state.element.length);
@@ -75,6 +75,11 @@ export default class Iframe extends Component{
                     onLoad={() =>{
                         this.props.loadingIcon(false);
                         this.focusToElement();
+                        console.log(this.refs.myIframe.contentWindow.location.href);
+                        this.props.setURLMyWindow({
+                            url: this.refs.myIframe.contentWindow.location.href,
+                            reload: false
+                        });
                     }}
                 ></iframe>
             </div>
@@ -86,6 +91,7 @@ Iframe.propTypes = {
     reload: PropTypes.bool,
     reloadPage: PropTypes.func,
     loadingIcon: PropTypes.func,
+    setURLMyWindow: PropTypes.func,
     size: PropTypes.object,
     element: PropTypes.string
 }

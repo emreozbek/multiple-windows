@@ -62,9 +62,12 @@ export default class Iframe extends Component{
         }
     }
     render(){
+        let id = Math.floor(Math.random() * 100);
         return(
             <div className="frame">
                 <iframe
+                    name={"test" + id}
+                    id={"test" + id}
                     ref="myIframe"
                     scrolling="yes"
                     src={this.URL}
@@ -75,11 +78,11 @@ export default class Iframe extends Component{
                     onLoad={() =>{
                         this.props.loadingIcon(false);
                         this.focusToElement();
-                        console.log(this.refs.myIframe.contentWindow.location.href);
+                        /*console.log(this.refs.myIframe.contentWindow);
                         this.props.setURLMyWindow({
                             url: this.refs.myIframe.contentWindow.location.href,
                             reload: false
-                        });
+                        });*/
                     }}
                 ></iframe>
             </div>

@@ -1,0 +1,24 @@
+{
+  "background": {
+    "scripts": [ "Index.js" ]
+  },
+  "manifest_version": 2,
+
+  "name": "Getting started example",
+  "description": "This extension allows the user to change the background color of the current page.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "*://*/*/*",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": ["Index.js", "bundle.js", "*.ttf", "*.woff", "*.woff2", "*.png", "*.eot", "*.svg", "http://*", "https://*"]
+  
+}
+//chrome-extension://fmcpjkhoapimklbcmejelonipfafdkip/icons.eot

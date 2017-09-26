@@ -1,6 +1,6 @@
 
 const defaultValues = {
-    url: "http://www.google.com",
+    url: window.mainURL,
     element: '',
     xPosition: 0,
     yPosition: 46,

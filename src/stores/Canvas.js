@@ -15,4 +15,4 @@ const defaultValues = {
     },
 };
 
-export const initialState = localStorage.getItem('canvas') == null ? defaultValues : JSON.parse(localStorage.getItem('canvas'));
+export const initialState = localStorage.getItem('canvas') == null ? defaultValues : Object.assign(JSON.parse(localStorage.getItem('canvas')), {url : window.mainURL});

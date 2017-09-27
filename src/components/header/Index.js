@@ -137,11 +137,13 @@ export default class Header extends Component {
                             element={this.props.canvasStore.element}
                         />
                     </Menu.Item>
+                    {/*
                     <HeaderSearch
                         url={this.props.canvasStore.url}
                         setURLALLWindows={this.props.setURLALLWindows}
                         setCanvasURL={this.props.setCanvasURL}
                     />
+                    */}
                     <Menu.Item
                         name="refresh"
                         title="Refresh to The All Windows"

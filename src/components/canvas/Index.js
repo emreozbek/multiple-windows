@@ -9,7 +9,6 @@ export default class Canvas extends Component{
         this.state = {
             sizing: false
         };
-        console.log(props);
     }
     componentDidMount(){
         this.props.actions.canvas.setPosition({

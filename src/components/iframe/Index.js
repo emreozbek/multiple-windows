@@ -76,16 +76,14 @@ export default class Iframe extends Component{
                         height: this.props.size.height
                     }}
                     onLoad={(e) =>{
-
-                        console.log(e.target.contents().get(0).location.href);
+                        this.props.loadingIcon(false);
                         try {
-                            e.target.contents().get(0).location.href
+                            let aa = this.refs.myIframe.contentWindow.location.href;
                         } catch (b) {
                             alert("Access denied: Cross-domain security error");
                             return false
                         }
 
-                        this.props.loadingIcon(false);
                         this.focusToElement();
                         /*console.log(this.refs.myIframe.contentWindow);
                         this.props.setURLMyWindow({

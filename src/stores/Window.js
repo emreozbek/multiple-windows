@@ -23,7 +23,6 @@ export const defaultValues = {
     reload: false,
     fullScreen: false,
     clicked: false,
-    url  : "http://www.emreozbek.net"
+    url  : "#"
 }
-
-export const initialState = localStorage.getItem('windows') == null ? [] : JSON.parse(localStorage.getItem('windows'));
+export const initialState = myWindows;

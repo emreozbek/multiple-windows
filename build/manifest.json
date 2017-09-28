@@ -7,15 +7,16 @@
   "description": "This project is a chrome extension. It provide to create windows to different sizes and multiple for front-end developers.",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "icon-16.png"
+    "default_icon": "build/icon-16.png"
   },
   "icons": {
-    "256": "icon-256.png",
-    "128": "icon-128.png",
-    "48": "icon-48.png",
-    "16": "icon-16.png"
+    "256": "build/icon-256.png",
+    "128": "build/icon-128.png",
+    "48": "build/icon-48.png",
+    "16": "build/icon-16.png"
   },
   "permissions": [
+    "webRequest",
     "activeTab",
     "storage",
     "tabs",
@@ -24,4 +25,3 @@
   ],
   "web_accessible_resources": ["Index.js", "bundle.js", "*.ttf", "*.woff", "*.woff2", "*.png", "*.eot", "*.svg", "http://*", "https://*"]
 }
-//chrome-extension://fmcpjkhoapimklbcmejelonipfafdkip/icons.eot

@@ -1,11 +1,16 @@
 
+var chromeExtensionID = 'fmcpjkhoapimklbcmejelonipfafdkip';
+
+
+
 var webpack = require('webpack');
 module.exports = {
     entry: [
         "./src/Index.js"
     ],
     output: {
-        filename: "./build/bundle.js"
+        path: __dirname + "/build",
+        filename: "bundle.js"
     },
     module: {
         rules: [{
@@ -28,7 +33,7 @@ module.exports = {
             }
         },{
             test : /\.(eot|otf|woff|woff2|ttf|svg|jpg|jpeg|png|gif)(\?\S*)?$/,
-            loader: 'file-loader?name=build/[name].[ext]',
+            loader: 'file-loader?name=[name].[ext]&publicPath=chrome-extension://'+chromeExtensionID+'/&outputPath=build/'
         }]
     },
     plugins: [

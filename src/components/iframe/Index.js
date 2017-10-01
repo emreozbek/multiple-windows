@@ -17,6 +17,7 @@ export default class Iframe extends Component{
         this.state = {
             element: ''
         };
+        window.domain = "company.com";
     }
     reload(){
         this.refs.myIframe.src = this.getURL();
@@ -77,21 +78,8 @@ export default class Iframe extends Component{
                     }}
                     onLoad={(e) =>{
                         this.props.loadingIcon(false);
-                        try {
-                            let aa = this.refs.myIframe.contentWindow.location.href;
-                        } catch (b) {
-                            alert("Access denied: Cross-domain security error");
-                            return false
-                        }
-
                         this.focusToElement();
-                        /*console.log(this.refs.myIframe.contentWindow);
-                        this.props.setURLMyWindow({
-                            url: this.refs.myIframe.contentWindow.location.href,
-                            reload: false
-                        });*/
                     }}
-                    onError={(e) => console.log(e)}
                 ></iframe>
             </div>
         )

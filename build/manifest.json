@@ -1,8 +1,6 @@
 {
   "background": {
-    "scripts": [
-      "Index.js"
-    ]
+    "scripts": ["Index.js"]
   },
   "manifest_version": 2,
   "name": "Work to Multiple Windows",
@@ -22,8 +20,9 @@
     "activeTab",
     "storage"
   ],
-
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "web_accessible_resources": [
+    "index.html",
     "Index.js",
     "bundle.js",
     "*.ttf",
@@ -34,14 +33,5 @@
     "*.svg",
     "http://*",
     "https://*"
-  ],
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "js":     ["bundle.js"]
-    }
   ]
 }

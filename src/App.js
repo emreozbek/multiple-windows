@@ -48,33 +48,10 @@ class App extends Component {
         )
     }
     componentWillReceiveProps(props) {
-        console.log(chrome);
         chrome.storage.local.set({
             windows: props.windowsStore,
             canvas : props.canvasStore
         });
-        
-        /*
-         var port = chrome.runtime.connect('fmcpjkhoapimklbcmejelonipfafdkip');
-         port.postMessage({joke: "Knock knock"});
-         chrome.runtime.sendMessage('fmcpjkhoapimklbcmejelonipfafdkip', {greeting: "hello"}, function(response) {
-         console.log(response);
-         });
-        localStorage.setItem('windows', JSON.stringify(props.windowsStore));
-         localStorage.setItem('canvas', JSON.stringify(props.canvasStore));
-         chrome.storage.local.set('fmcpjkhoapimklbcmejelonipfafdkip', {
-         windows: props.windowsStore,
-         canvas : props.canvasStore
-         });
-
-         */
-
-        //localStorage.windows = JSON.stringify(props.windowsStore);
-        //localStorage.canvas = JSON.stringify(props.canvasStore);
-        /*window.setLocalStorageForMultipleWindows({
-         windows: props.windowsStore,
-         canvas : props.canvasStore
-         });*/
     }
 }
 App.propTypes = {

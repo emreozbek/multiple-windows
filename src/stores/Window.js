@@ -25,4 +25,5 @@ export const defaultValues = {
     clicked: false,
     url  : "#"
 }
-export const initialState = myWindows || [];
+export const initialState = windowsStoreFromStorage;
+

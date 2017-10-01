@@ -1,6 +1,6 @@
 
 const defaultValues = {
-    url: window.mainURL,
+    url: mainURL,
     element: '',
     xPosition: 0,
     yPosition: 46,
@@ -14,5 +14,5 @@ const defaultValues = {
         height: 0
     },
 };
+export const initialState = (canvasStoreFromStorage == {} ? defaultValues : Object.assign(defaultValues, {url : mainURL}));
 
-export const initialState = myCanvas == {} ? defaultValues : Object.assign(defaultValues, {url : mainURL});

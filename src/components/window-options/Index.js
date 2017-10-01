@@ -100,17 +100,19 @@ export default class Options extends Component {
                         }
                     </Menu.Menu>
                     <Menu.Menu position='right' className={this.props.options.size.width <= this.responsive ? '' : 'hideClass'}>
-                        <Dropdown item icon='search' simple>
-                            <Dropdown.Menu>
-                                {/*
-                                    <WindowSearch
-                                        url={this.props.options.url}
-                                        setURLMyWindow={this.props.setURLMyWindow}
-                                        cloneToAllWindows={this.props.cloneToAllWindows}
-                                    />
-                                */}
-                            </Dropdown.Menu>
-                        </Dropdown>
+                        {/*
+                            <Dropdown item icon='search' simple>
+                                <Dropdown.Menu>
+
+                                        <WindowSearch
+                                            url={this.props.options.url}
+                                            setURLMyWindow={this.props.setURLMyWindow}
+                                            cloneToAllWindows={this.props.cloneToAllWindows}
+                                        />
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+                         */}
                         <Dropdown.Item text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} />
                         <Dropdown simple item icon="content">
                             <Dropdown.Menu>

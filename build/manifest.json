@@ -1,6 +1,8 @@
 {
   "background": {
-    "scripts": [ "Index.js" ]
+    "scripts": [
+      "Index.js"
+    ]
   },
   "manifest_version": 2,
   "name": "Work to Multiple Windows",
@@ -16,12 +18,30 @@
     "16": "build/icon-16.png"
   },
   "permissions": [
-    "webRequest",
-    "activeTab",
-    "storage",
     "tabs",
-    "*://*/*/*",
-    "<all_urls>"
+    "activeTab",
+    "storage"
   ],
-  "web_accessible_resources": ["Index.js", "bundle.js", "*.ttf", "*.woff", "*.woff2", "*.png", "*.eot", "*.svg", "http://*", "https://*"]
+
+  "web_accessible_resources": [
+    "Index.js",
+    "bundle.js",
+    "*.ttf",
+    "*.woff",
+    "*.woff2",
+    "*.png",
+    "*.eot",
+    "*.svg",
+    "http://*",
+    "https://*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js":     ["bundle.js"]
+    }
+  ]
 }

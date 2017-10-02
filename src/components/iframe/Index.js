@@ -36,6 +36,8 @@ export default class Iframe extends Component{
         return this.props.url;
     }
     focusToElement(){
+        if(this.state.element == "")
+            return;
         let str = this.state.element.slice(1, this.state.element.length);
         let el;
         if(Iframe.idRegex.exec(this.state.element) != null)
@@ -78,6 +80,7 @@ export default class Iframe extends Component{
                     }}
                     onLoad={(e) =>{
                         this.props.loadingIcon(false);
+                        this.page = this.refs.myIframe.contentWindow;
                         this.focusToElement();
                     }}
                 ></iframe>

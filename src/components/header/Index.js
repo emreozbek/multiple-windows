@@ -154,7 +154,7 @@ export default class Header extends Component {
                     <Menu.Item
                         name="close"
                         title="Close to The Extension"
-                        onClick={() => window.reload()}
+                        onClick={() => window.location.reload()}
                     >
                         <Icon name='close' color="red"/>
                     </Menu.Item>

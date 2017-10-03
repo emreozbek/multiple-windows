@@ -1,6 +1,6 @@
 
 var chromeExtensionID = 'fmcpjkhoapimklbcmejelonipfafdkip';
-
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 var webpack = require('webpack');
@@ -9,7 +9,7 @@ module.exports = {
         "./src/Index.js"
     ],
     output: {
-        path: __dirname + "/build",
+        path : __dirname + '/build/assets',
         filename: "bundle.js"
     },
     module: {
@@ -33,7 +33,7 @@ module.exports = {
             }
         },{
             test : /\.(eot|otf|woff|woff2|ttf|svg|jpg|jpeg|png|gif)(\?\S*)?$/,
-            loader: 'file-loader?name=[name].[ext]&publicPath=chrome-extension://'+chromeExtensionID+'/&outputPath=build/'
+            loader: 'file-loader?name=[name].[ext]'
         }]
     },
     plugins: [
@@ -46,6 +46,7 @@ module.exports = {
             compress:{
                 warnings: false
             }
-        })
+        }),
+        new ExtractTextPlugin('build/bundle.css')
     ]
 }

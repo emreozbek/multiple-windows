@@ -21,7 +21,7 @@
                 window.url = tab.url;
             });
             chrome.tabs.executeScript(tab.id, {code: 'var windowsStoreFromStorage = '+JSON.stringify(last.windows)+', canvasStoreFromStorage = '+JSON.stringify(last.canvas)+', mainURL="' + tab.url + '";' });
-            chrome.tabs.executeScript(tab.id, {file: 'bundle.js'});
+            chrome.tabs.executeScript(tab.id, {file: 'assets/bundle.js'});
         });
 
 

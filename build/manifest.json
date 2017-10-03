@@ -1,19 +1,19 @@
 {
   "background": {
-    "scripts": ["Index.js"]
+    "scripts": ["background.js"]
   },
   "manifest_version": 2,
   "name": "Work to Multiple Windows",
   "description": "This project is a chrome extension. It provide to create windows to different sizes and multiple for front-end developers.",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "build/icon-16.png"
+    "default_icon": "assets/icon-16.png"
   },
   "icons": {
-    "256": "build/icon-256.png",
-    "128": "build/icon-128.png",
-    "48": "build/icon-48.png",
-    "16": "build/icon-16.png"
+    "256": "assets/icon-256.png",
+    "128": "assets/icon-128.png",
+    "48": "assets/icon-48.png",
+    "16": "assets/icon-16.png"
   },
   "permissions": [
     "tabs",
@@ -24,9 +24,8 @@
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "web_accessible_resources": [
-    "index.html",
-    "Index.js",
-    "bundle.js",
+    "background.js",
+    "assets/bundle.js",
     "*.ttf",
     "*.woff",
     "*.woff2",

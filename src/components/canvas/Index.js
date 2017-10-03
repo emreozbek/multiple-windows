@@ -20,6 +20,29 @@ export default class Canvas extends Component{
                 });
             }
         })
+        document.addEventListener("keydown", function (e) {
+            switch (event.keyCode) {
+                case 38:{
+                    this.props.actions.window.setWindowPositionFromArrows({x:0, y: -1});
+                    e.preventDefault();
+                }break;
+                case 40:{
+                    this.props.actions.window.setWindowPositionFromArrows({x:0, y: 1});
+                    e.preventDefault();
+                }
+                break;
+                case 37:{
+                    this.props.actions.window.setWindowPositionFromArrows({x:-1, y: 0});
+                    e.preventDefault();
+                }
+                break;
+                case 39:{
+                    this.props.actions.window.setWindowPositionFromArrows({x:1, y: 0});
+                    e.preventDefault();
+                }
+                break;
+            }
+        }.bind(this));
     }
     sizingOnCanvas(state){
         this.setState({sizing: state});

@@ -41,6 +41,14 @@ export default function Window(state = initialState, action) {
                 } } : item
             );
         } break;
+        case actions.SET_WINDOW_POSITION_FROM_ARROWS : {
+            return state.map(item =>
+                item.clicked ? { ...item, position:{
+                    x: item.position.x + action.payload.x,
+                    y: item.position.y + action.payload.y
+                } } : item
+            );
+        } break;
         case actions.SET_WINDOW_NAME : {
             return state.map(item =>
                 item.id === action.payload.id ? { ...item, name: action.payload.name } : item

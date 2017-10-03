@@ -50,6 +50,14 @@ export const setWindowPosition = (text) =>{
         })
     }
 }
+export const setWindowPositionFromArrows = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Window.SET_WINDOW_POSITION_FROM_ARROWS,
+            payload: text
+        })
+    }
+}
 export const setWindowName = (text) =>{
     return (dispatch) => {
         dispatch({

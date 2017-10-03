@@ -6,7 +6,7 @@
             code: "window.stop();",
             runAt: "document_start"
         });
-        chrome.tabs.executeScript(tab.id, {code: '(function(d){if(self!=top)return false; d.write(\'<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Multiple Windows</title></head><body><div id="app" class="app"></div></body></html>\')})(document)'});
+        chrome.tabs.executeScript(tab.id, {code: '(function(d){if(self!=top)return false; d.write(\'<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Multiple Windows</title><link rel="stylesheet" href="'+chrome.extension.getURL('assets/bundle.css')+'"></head><body><div id="app" class="app"></div></body></html>\')})(document)'});
         chrome.storage.local.get(['windows', 'canvas'], function (result) {
             var last = {};
             if(result.windows != undefined)

@@ -26,6 +26,7 @@
   "web_accessible_resources": [
     "background.js",
     "assets/bundle.js",
+    "assets/bundle.css",
     "*.ttf",
     "*.woff",
     "*.woff2",

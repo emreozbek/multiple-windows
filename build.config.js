@@ -1,8 +1,7 @@
 
-var chromeExtensionID = 'fmcpjkhoapimklbcmejelonipfafdkip';
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-
+var extractCSS = new ExtractTextPlugin('bundle.css');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var webpack = require('webpack');
 module.exports = {
     entry: [
@@ -15,13 +14,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.(css|scss)$/,
-            use: [{
-                loader: "style-loader" // creates style nodes from JS strings
-            }, {
-                loader: "css-loader" // translates CSS into CommonJS
-            }, {
-                loader: "sass-loader" // compiles Sass to CSS
-            }]
+            use: extractCSS.extract(["css-loader", "sass-loader"])
         },{
             test: /\.js$/,
             exclude: /node_modules/,
@@ -47,6 +40,7 @@ module.exports = {
                 warnings: false
             }
         }),
-        new ExtractTextPlugin('build/bundle.css')
+        extractCSS,
+        new OptimizeCssAssetsPlugin()
     ]
 }

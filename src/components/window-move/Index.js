@@ -21,6 +21,7 @@ export default class WindowMove extends Component{
         document.addEventListener('mouseup', this._stopMoving);
         document.addEventListener('mousemove', this._setWindowPosition);
         this.props.startDrag();
+        console.log(rec, e.clientX, e.clientY);
     }
     stopMoving(){
         document.removeEventListener('mouseup', this._stopMoving)

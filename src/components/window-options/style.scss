@@ -14,7 +14,7 @@
   .upper{
     position: relative; z-index: 10;
   }
-  & > .menu{margin: 0 !important; }
+  & > .menu{margin: 0 !important;}
 }
 .window:hover{
   .options{
@@ -29,5 +29,8 @@
 .hideClass{display: none !important;}
 .responsiveMenu{
   margin-top: 0 !important;
-  min-height: 45px !important;
+  min-height: 46px !important;
+}
+.mobileRightMenu{
+  min-height: 46px;
 }

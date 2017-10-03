@@ -9,12 +9,9 @@ export default class Canvas extends Component{
         this.state = {
             sizing: false
         };
+
     }
     componentDidMount(){
-        this.props.actions.canvas.setPosition({
-            xPosition: this.refs.myCanvas.offsetLeft,
-            yPosition: this.refs.myCanvas.offsetTop
-        });
         document.addEventListener('click', (e)=> {
             if(!this.refs.myCanvas.contains(e.target) | this.refs.myCanvas == e.target ){
                 this.props.actions.window.setClickedWindow({

@@ -21,7 +21,6 @@ export default class WindowMove extends Component{
         document.addEventListener('mouseup', this._stopMoving);
         document.addEventListener('mousemove', this._setWindowPosition);
         this.props.startDrag();
-        console.log(rec, e.clientX, e.clientY);
     }
     stopMoving(){
         document.removeEventListener('mouseup', this._stopMoving)
@@ -30,8 +29,8 @@ export default class WindowMove extends Component{
     }
     setWindowPosition(e){
         this.props.setPosition({
-            x: e.pageX - this.props.canvas.xPosition - this.state.startX - 7,
-            y: e.pageY - this.props.canvas.yPosition - this.state.startY - 7
+            x: e.pageX - this.props.canvas.xPosition - this.state.startX,
+            y: e.pageY - this.props.canvas.yPosition - this.state.startY
         });
     }
     render(){
@@ -41,7 +40,6 @@ export default class WindowMove extends Component{
                     ref="moveTool"
                     onMouseDown={this.startMoving.bind(this)}
                     onDoubleClick = {() => {this.props.fullScreen(!this.props.fullScreenState)}}>
-
                 </div>
             </Menu.Item>
         )

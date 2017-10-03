@@ -47,13 +47,22 @@ export default class WindowSizing extends Component{
             positionX: this.state.startPX - (this.state.startX - e.clientX),
             positionY: this.state.startPY - (this.state.startY - e.clientY),
             negativeWidth: this.state.startW + (this.state.startX - e.clientX),
-            negativeHeight: this.state.startH + (this.state.startY - e.clientY),
+            negativeHeight: this.state.startH + (this.state.startY - e.clientY)
         });
-        if(this.state.width <= 0)
-            this.state.width = 0;
+        if(this.state.width <= 29)
+            this.state.width = 29;
         if(this.state.height <= 0)
             this.state.height = 0;
-        this.props.setSize({width: this.state.width, height: this.state.height});
+        if(this.state.negativeWidth <= 29){
+            this.state.negativeWidth = 29;
+            this.state.positionX = this.state.startPX + this.state.startW - 29;
+        }
+        if(this.state.negativeHeight <= 0){
+            this.state.negativeHeight = 0;
+            this.state.positionY = this.state.startPY + this.state.startH;
+        }
+
+
         switch (this.props.direction){
             case "leftTop" : {
                 this.props.setSize({width: this.state.negativeWidth, height: this.state.negativeHeight});

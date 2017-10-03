@@ -60,7 +60,7 @@ export default class Options extends Component {
                         fullScreenState={this.props.options.fullScreen}
                         fullScreen={this.props.fullScreen}
                     />
-                    <Menu.Item>
+                    <Menu.Item className={this.props.options.size.width <= 260 ? 'hideClass' : ''}>
                         <WindowName
                             name={this.props.options.name}
                             setWindowName={this.props.setWindowName}
@@ -99,7 +99,7 @@ export default class Options extends Component {
                             }.bind(this))
                         }
                     </Menu.Menu>
-                    <Menu.Menu position='right' className={this.props.options.size.width <= this.responsive ? '' : 'hideClass'}>
+                    <Menu.Menu position='right' className={"mobileRightMenu " + (this.props.options.size.width <= this.responsive ? '' : 'hideClass')}>
                         {/*
                             <Dropdown item icon='search' simple>
                                 <Dropdown.Menu>
@@ -113,7 +113,7 @@ export default class Options extends Component {
                                 </Dropdown.Menu>
                             </Dropdown>
                          */}
-                        <Dropdown.Item text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} />
+                        <Dropdown.Item text={<SizingTextbox size={{ width: this.props.options.size.width, height: this.props.options.size.height }} setSize={this.props.setSize} />} className={this.props.options.size.width <= 140 ? 'hideClass' : ''} />
                         <Dropdown simple item icon="content">
                             <Dropdown.Menu>
                                 {

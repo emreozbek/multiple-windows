@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Label} from 'semantic-ui-react'
@@ -6,71 +5,67 @@ import {Label} from 'semantic-ui-react'
 import './style.scss'
 
 
-
-
-export default class Iframe extends Component{
+export default class Iframe extends Component {
     static idRegex = /^[#]/;
     static classRegex = /^[.]/;
-    constructor(props){
+    constructor(props) {
         super(props);
         this.URL = this.getURL();
         this.state = {
             element: ''
         };
-        window.domain = "company.com";
     }
-    reload(){
+    reload() {
         this.refs.myIframe.src = this.getURL();
         this.props.loadingIcon(true)
     }
-    componentDidUpdate(){
-        if(this.props.reload){
+    componentDidUpdate() {
+        if (this.props.reload) {
             this.props.reloadPage(false);
             this.URL = this.getURL();
             this.reload();
         }
         this.page = this.refs.myIframe.contentWindow;
-
     }
-    getURL(){
+    getURL() {
         return this.props.url;
     }
-    focusToElement(){
-        if(this.state.element == "")
+    focusToElement() {
+        if (this.state.element == "")
             return;
         let str = this.state.element.slice(1, this.state.element.length);
         let el;
-        if(Iframe.idRegex.exec(this.state.element) != null)
+        if (Iframe.idRegex.exec(this.state.element) != null)
             el = this.page.document.getElementById(str);
-        else if(Iframe.classRegex.exec(this.state.element) != null)
+        else if (Iframe.classRegex.exec(this.state.element) != null)
             el = this.page.document.getElementsByClassName(str);
         else
             el = this.page.document.getElementsByTagName(this.state.element);
 
-        if(el == null || el.length == 0)
+        if (el == null || el.length == 0)
             this.page.scrollTo(0, 0);
-        else{
-            if(el.length > 0)
+        else {
+            if (el.length > 0)
                 el = el[0].getBoundingClientRect();
             else
                 el = el.getBoundingClientRect();
             this.page.scrollTo(Math.abs(el.left), Math.abs(el.top));
         }
     }
-    componentWillReceiveProps(props){
-        if(props.element != this.state.element){
+    componentWillReceiveProps(props) {
+        if (props.element != this.state.element) {
             this.setState({element: props.element}, () => {
                 this.focusToElement();
             });
         }
     }
-    render(){
+    render() {
         let id = Math.floor(Math.random() * 100);
-        return(
+        return (
             <div className="frame">
                 <iframe
-                    name={"test" + id}
-                    id={"test" + id}
+                    name={"myIframe" + id}
+                    id={"myIframe" + id}
                     ref="myIframe"
                     scrolling="yes"
                     src={this.URL}
@@ -80,6 +75,12 @@ export default class Iframe extends Component{
                     }}
                     onLoad={(e) =>{
                         this.props.loadingIcon(false);
+                        try {
+                            let doc = this.refs.myIframe.contentWindow.document;
+                        } catch (b) {
+                            alert("Access denied: Cross-domain security error");
+                            return false
+                        }
                         this.page = this.refs.myIframe.contentWindow;
                         this.focusToElement();
                     }}

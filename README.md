@@ -1,6 +1,6 @@
 # Multiple Windows
 
-This project is a chrome extension. It provide to create windows to different sizes and multiple for front-end developers. Edit
+This project is a chrome extension. It provide to create windows to different sizes and multiple for front-end developers.
 
 ## Getting Started
 

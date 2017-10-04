@@ -38,9 +38,10 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compress:{
                 warnings: false
-            }
+            },
+            output: {comments: false}
         }),
         extractCSS,
-        new OptimizeCssAssetsPlugin()
+        new OptimizeCssAssetsPlugin({cssProcessorOptions: { discardComments: {removeAll: true } }})
     ]
 }

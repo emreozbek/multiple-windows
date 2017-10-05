@@ -3,8 +3,8 @@
     "scripts": ["background.js"]
   },
   "manifest_version": 2,
-  "name": "Work to Multiple Windows",
-  "description": "This project is a chrome extension. It provide to create windows to different sizes and multiple for front-end developers.",
+  "name": "Multiple Windows",
+  "description": "It provide to create windows to different sizes and multiple for front-end developers.",
   "version": "1.0",
   "browser_action": {
     "default_icon": "assets/icon-16.png"

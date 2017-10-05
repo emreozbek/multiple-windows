@@ -59,10 +59,12 @@ export default class Window extends Component{
             this.setState({zIndex: 99999});
             this.refs.myWindow.classList.add("moving");
         }
+        this.props.sizingOnCanvas(true);
     }
     stopDrag(){
         this.setState({zIndex: this.props.options.id});
         this.refs.myWindow.classList.remove("moving");
+        this.props.sizingOnCanvas(false);
     }
     setPosition(coor){
         if(!this.props.options.fullScreen){

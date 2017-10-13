@@ -48,10 +48,12 @@ class App extends Component {
         )
     }
     componentWillReceiveProps(props) {
-        chrome.storage.local.set({
-            windows: props.windowsStore,
-            canvas : props.canvasStore
-        });
+        try {
+            chrome.storage.local.set({
+                windows: props.windowsStore,
+                canvas : props.canvasStore
+            });
+        }catch (e){}
     }
 }
 App.propTypes = {

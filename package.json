@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config dev.config.js",
-    "build": "webpack  --config build.config.js"
+    "build": "webpack --config build.config.js"
   },
   "author": "Emre ÖZBEK",
   "license": "ISC",

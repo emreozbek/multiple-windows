@@ -4,7 +4,7 @@ This project is a chrome extension. It provide to create windows to different si
 
 ## Preview
 
-You can look below
+You can look below<br />
 [https://emreozbek.github.io/multiple-windows/](https://emreozbek.github.io/multiple-windows/)
 
 ## Getting Started

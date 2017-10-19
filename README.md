@@ -9,7 +9,7 @@ You can look below<br />
 
 ## Getting Started
 
-Setup to extension from [here](#) and start to using. Open a website or yours file from local development. Click to extemsion icon. You can windows to different size from top menu and can test your project.
+Setup to extension from [here](https://chrome.google.com/webstore/detail/multiple-windows/npdmdcegegmlhfdpkflmkkmjpficmimk) and start to using. Open a website or yours file from local development. Click to extemsion icon. You can windows to different size from top menu and can test your project.
 
 ## Customize
 

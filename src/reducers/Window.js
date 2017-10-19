@@ -43,7 +43,7 @@ export default function Window(state = initialState, action) {
         } break;
         case actions.SET_WINDOW_POSITION_FROM_ARROWS : {
             return state.map(item =>
-                item.clicked ? { ...item, position:{
+                (item.clicked && !item.fullScreen) ? { ...item, position:{
                     x: item.position.x + action.payload.x,
                     y: item.position.y + action.payload.y
                 } } : item

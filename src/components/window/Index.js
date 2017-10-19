@@ -115,7 +115,7 @@ export default class Window extends Component{
         this.props.actions.setSize({
             id: this.props.options.id,
             width: e.target.innerWidth - 41,
-            height: e.target.innerHeight - 114
+            height: this.props.options.size.height
         });
     }
     setURLMyWindow(data){

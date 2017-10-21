@@ -14,7 +14,7 @@ export default class Iframe extends Component {
         this.URL = this.getURL();
         this.state = {
             element: '',
-            showModal: false
+            loadState: 0
         };
     }
 
@@ -70,40 +70,32 @@ export default class Iframe extends Component {
     render() {
         let id = Math.floor(Math.random() * 100);
         return (
-            <Popup trigger={
-                <div className="frame">
-                    <iframe
-                        name={"myIframe" + id}
-                        id={"myIframe" + id}
-                        ref="myIframe"
-                        scrolling="yes"
-                        src={this.URL}
-                        style={{
+            <div className="frame">
+                <iframe
+                    name={"myIframe" + id}
+                    ref="myIframe"
+                    src={this.URL}
+                    scrolling="yes"
+                    style={{
                             width: this.props.size.width,
                             height: this.props.size.height
                         }}
-                        onLoad={(e) =>{
-                            this.props.loadingIcon(false);
-                            try {
-                                let doc = this.refs.myIframe.contentWindow.document;
-                            } catch (b) {
-                                this.setState({showModal: true});
-                                return false
-                            }
-                            this.page = this.refs.myIframe.contentWindow;
-                            this.focusToElement();
-                        }}
+                    onLoad={(e) =>{
+                        this.props.loadingIcon(false);
+                        let wn = this.refs.myIframe.contentWindow;
+                        try{
+                            let page = wn.document;
+                        }catch(e){
+                            if(this.state.loadState == 0)
+                                this.refs.myIframe.contentWindow.location.replace(chrome.extension.getURL('cors.html'));
+                            this.setState({loadState: 1});
+                            return;
+                        }
+                        this.page = this.refs.myIframe.contentWindow;
+                        this.focusToElement();
+                    }}
                     ></iframe>
-                </div>}
-                   open={this.state.showModal}
-                   position="top center"
-                   wide={true}
-                   className="corsPopup">
-                <Popup.Header>CORS</Popup.Header>
-                <Popup.Content>
-                    Access denied: Cross-domain security error
-                </Popup.Content>
-            </Popup>
+            </div>
         )
     }
 }

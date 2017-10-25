@@ -13,6 +13,7 @@ const defaultValues = {
         width: 0,
         height: 0
     },
+    direction: 'horizontal'
 };
-export const initialState = (canvasStoreFromStorage == {} ? defaultValues : Object.assign(defaultValues, {url : mainURL}));
+export const initialState = (canvasStoreFromStorage == {} ? defaultValues : Object.assign(defaultValues, canvasStoreFromStorage, {url : mainURL}));
 

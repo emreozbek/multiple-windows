@@ -4,6 +4,12 @@ import {initialState} from '../stores/Canvas'
 
 export default function Canvas(state = initialState, action) {
     switch (action.type) {
+        case actions.SET_DIRECTION : {
+            return {
+                ...state,
+                direction: action.payload
+            };
+        } break;
         case actions.SET_POSITION : {
             return {
                 ...state,

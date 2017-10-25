@@ -24,24 +24,24 @@ export default class Canvas extends Component{
             switch (event.keyCode) {
                 case 38:{
                     this.props.actions.window.setWindowPositionFromArrows({x:0, y: -1});
-                    e.preventDefault();
                 }break;
                 case 40:{
                     this.props.actions.window.setWindowPositionFromArrows({x:0, y: 1});
-                    e.preventDefault();
                 }
                 break;
                 case 37:{
                     this.props.actions.window.setWindowPositionFromArrows({x:-1, y: 0});
-                    e.preventDefault();
                 }
                 break;
                 case 39:{
                     this.props.actions.window.setWindowPositionFromArrows({x:1, y: 0});
-                    e.preventDefault();
                 }
                 break;
             }
+
+            if(this.props.store.windows.find(item => item.clicked == true) !== undefined)
+                e.preventDefault();
+
         }.bind(this));
     }
     sizingOnCanvas(state){
@@ -53,7 +53,7 @@ export default class Canvas extends Component{
     }
     render(){
         return(
-            <div className="canvas" ref="myCanvas">
+            <div className={"canvas " + this.props.store.canvas.direction} ref="myCanvas">
                 <div className="sizingOnCanvas" style={{display: (this.state.sizing ? 'block' : 'none')}}></div>
                 {
                     this.props.store.windows.map(function(item){

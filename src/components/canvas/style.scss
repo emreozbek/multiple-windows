@@ -2,8 +2,14 @@
 .canvas{
   position: absolute;
   top:46px;
-  min-height: 6000px;
-  width: 100%;
+  &.vertical{
+    min-height: 6000px;
+    width: 100%;
+  }
+  &.horizontal{
+    height: 100%;
+    min-width: 6000px;
+  }
 }
 .sizingOnCanvas{
   width: 100%;

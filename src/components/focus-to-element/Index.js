@@ -20,6 +20,7 @@ export default class FocusToElement extends Component {
                 icon='eye'
                 onKeyPress={this.onChange.bind(this)}
                 transparent
+                style={{'width': 250}}
             />
         )
     }

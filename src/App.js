@@ -34,6 +34,7 @@ class App extends Component {
                     focusToElement={this.props.canvasActions.focusToElement}
                     windowStore={this.props.windowsStore}
                     canvasStore={this.props.canvasStore}
+                    setDirection={this.props.canvasActions.setDirection}
                 />
                 <Canvas
                     actions={{

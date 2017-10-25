@@ -82,6 +82,7 @@ export default class Iframe extends Component {
                         }}
                     onLoad={(e) =>{
                         this.props.loadingIcon(false);
+                        /*
                         let wn = this.refs.myIframe.contentWindow;
                         try{
                             let page = wn.document;
@@ -90,7 +91,7 @@ export default class Iframe extends Component {
                                 this.refs.myIframe.contentWindow.location.replace(chrome.extension.getURL('cors.html'));
                             this.setState({loadState: 1});
                             return;
-                        }
+                        }*/
                         this.page = this.refs.myIframe.contentWindow;
                         this.focusToElement();
                     }}

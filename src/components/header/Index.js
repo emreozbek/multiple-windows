@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Dropdown, Icon, Menu, Button} from 'semantic-ui-react'
 import HeaderSearch from '../header-search'
 import FocusToElement from '../focus-to-element'
+import CanvasDirection from '../canvas-direction'
 import './style.scss'
 
 const menuList = [{
@@ -37,6 +38,7 @@ const menuList = [{
         { width: 800, height: 600, title: '12"'},
         { width: 1024, height: 768, title: '12",13.3",14",15"'},
         { width: 1280, height: 800, title: '15.4″, 14.1″, 13.3, 12.1″'},
+        { width: 1366, height: 768, title: '15.4″, 14.1″, 13.3, 12.1″'},
         { width: 1440, height: 900, title: '14″'},
         { width: 1280, height: 1024, title: '14″, 15″, 15.7″'},
         { width: 1400, height: 1050, title: '12.1″, 14″, 15″'},
@@ -130,6 +132,7 @@ export default class Header extends Component {
                     }.bind(this))
                 }
                 <Dropdown size="mini" item defaultValue="window" options={this.info} />
+                <CanvasDirection direction={this.props.canvasStore.direction} setDirection={this.props.setDirection} />
                 <Menu.Menu position="right">
                     <Menu.Item className="focusItem">
                         <FocusToElement
@@ -170,5 +173,6 @@ Header.propTypes = {
     setCanvasURL     : PropTypes.func,
     focusToElement   : PropTypes.func,
     windowStore      : PropTypes.array,
-    canvasStore      : PropTypes.object
+    canvasStore      : PropTypes.object,
+    setDirection     : PropTypes.func
 }

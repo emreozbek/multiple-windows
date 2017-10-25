@@ -35,3 +35,11 @@ export const focusToElement = (text) =>{
         })
     }
 }
+export const setDirection = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Canvas.SET_DIRECTION,
+            payload: text
+        })
+    }
+}

@@ -6,7 +6,6 @@ import {Dropdown, Icon} from 'semantic-ui-react'
 export default class CanvasDirection extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.direction);
     }
 
     render() {

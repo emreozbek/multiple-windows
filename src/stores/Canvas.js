@@ -12,7 +12,7 @@ const defaultValues = {
         width: 0,
         height: 0
     },
-    direction: 'horizontal',
+    direction: 'vertical',
     scrollRate: {
         x: 0,
         y: 0

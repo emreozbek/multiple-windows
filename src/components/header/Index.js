@@ -4,6 +4,7 @@ import {Dropdown, Icon, Menu, Button} from 'semantic-ui-react'
 import HeaderSearch from '../header-search'
 import FocusToElement from '../focus-to-element'
 import CanvasDirection from '../canvas-direction'
+import ScrollControl from '../scroll-control'
 import './style.scss'
 
 const menuList = [{
@@ -131,8 +132,20 @@ export default class Header extends Component {
                         </Dropdown>)
                     }.bind(this))
                 }
-                <Dropdown size="mini" item defaultValue="window" options={this.info} />
-                <CanvasDirection direction={this.props.canvasStore.direction} setDirection={this.props.setDirection} />
+                <Dropdown
+                    size="mini"
+                    item
+                    defaultValue="window"
+                    options={this.info} />
+                <CanvasDirection
+                    direction={this.props.canvasStore.direction}
+                    setDirection={this.props.setDirection}
+                />
+                <ScrollControl
+                    keepScroll={this.props.canvasStore.keepScroll}
+                    applyScroll={this.props.canvasStore.applyScroll}
+                    setScrollControl = {this.props.setScrollControl}
+                />
                 <Menu.Menu position="right">
                     <Menu.Item className="focusItem">
                         <FocusToElement
@@ -172,6 +185,7 @@ Header.propTypes = {
     setURLALLWindows : PropTypes.func,
     setCanvasURL     : PropTypes.func,
     focusToElement   : PropTypes.func,
+    setScrollControl : PropTypes.func,
     windowStore      : PropTypes.array,
     canvasStore      : PropTypes.object,
     setDirection     : PropTypes.func

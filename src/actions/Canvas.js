@@ -43,3 +43,19 @@ export const setDirection = (text) =>{
         })
     }
 }
+export const setScrollRate = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Canvas.SET_SCROLL_RATE,
+            payload: text
+        })
+    }
+}
+export const setScrollControl = (text) =>{
+    return (dispatch) => {
+        dispatch({
+            type: Canvas.SET_SCROLL_CONTROL,
+            payload: text
+        })
+    }
+}

@@ -35,6 +35,7 @@ class App extends Component {
                     windowStore={this.props.windowsStore}
                     canvasStore={this.props.canvasStore}
                     setDirection={this.props.canvasActions.setDirection}
+                    setScrollControl = {this.props.canvasActions.setScrollControl}
                 />
                 <Canvas
                     actions={{

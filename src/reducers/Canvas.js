@@ -10,6 +10,25 @@ export default function Canvas(state = initialState, action) {
                 direction: action.payload
             };
         } break;
+        case actions.SET_SCROLL_RATE : {
+            return {
+                ...state,
+                scrollRate: action.payload
+            };
+        } break;
+        case actions.SET_SCROLL_CONTROL : {
+            if(action.payload.type == "apply"){
+                return {
+                    ...state,
+                    applyScroll: action.payload.checked
+                };
+            }else{
+                return {
+                    ...state,
+                    keepScroll: action.payload.checked
+                };
+            }
+        } break;
         case actions.SET_POSITION : {
             return {
                 ...state,

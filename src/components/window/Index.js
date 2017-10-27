@@ -220,6 +220,10 @@ export default class Window extends Component{
                     }}
                     setURLMyWindow = {this.setURLMyWindow.bind(this)}
                     element={this.props.canvas.element}
+                    setScrollRate = {this.props.actions.setScrollRate}
+                    scrollRate = {this.props.canvas.scrollRate}
+                    applyScroll = {this.props.canvas.applyScroll}
+                    keepScroll = {this.props.canvas.keepScroll}
                 />
                 <Options
                     options        = {this.props.options}

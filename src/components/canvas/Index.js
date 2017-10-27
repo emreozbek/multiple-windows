@@ -20,28 +20,24 @@ export default class Canvas extends Component{
                 });
             }
         })
-        document.addEventListener("keydown", function (e) {
-            switch (event.keyCode) {
-                case 38:{
-                    this.props.actions.window.setWindowPositionFromArrows({x:0, y: -1});
-                }break;
-                case 40:{
-                    this.props.actions.window.setWindowPositionFromArrows({x:0, y: 1});
+        document.addEventListener("keydown", function (event) {
+            if(this.props.store.windows.find(item => item.clicked == true) !== undefined && event.target.nodeName != 'INPUT'){
+                switch (event.keyCode) {
+                    case 38:{
+                        this.props.actions.window.setWindowPositionFromArrows({x:0, y: -1});
+                    }break;
+                    case 40:{
+                        this.props.actions.window.setWindowPositionFromArrows({x:0, y: 1});
+                    }break;
+                    case 37:{
+                        this.props.actions.window.setWindowPositionFromArrows({x:-1, y: 0});
+                    }break;
+                    case 39:{
+                        this.props.actions.window.setWindowPositionFromArrows({x:1, y: 0});
+                    }break;
                 }
-                break;
-                case 37:{
-                    this.props.actions.window.setWindowPositionFromArrows({x:-1, y: 0});
-                }
-                break;
-                case 39:{
-                    this.props.actions.window.setWindowPositionFromArrows({x:1, y: 0});
-                }
-                break;
+                event.preventDefault();
             }
-
-            if(this.props.store.windows.find(item => item.clicked == true) !== undefined)
-                e.preventDefault();
-
         }.bind(this));
     }
     sizingOnCanvas(state){
@@ -62,7 +58,7 @@ export default class Canvas extends Component{
                                 key={item.id}
                                 options={item}
                                 canvas={this.props.store.canvas}
-                                actions={{...this.props.actions.window, cloneToAllWindows: this.cloneToAllWindows.bind(this)}}
+                                actions={{...this.props.actions.window, cloneToAllWindows: this.cloneToAllWindows.bind(this), setScrollRate: this.props.actions.canvas.setScrollRate}}
                                 sizingOnCanvas={this.sizingOnCanvas.bind(this)}
                             />
                         )

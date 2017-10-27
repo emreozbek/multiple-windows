@@ -5,7 +5,7 @@
   "manifest_version": 2,
   "name": "Multiple Windows",
   "description": "It provide to create windows to different sizes and multiple for front-end developers.",
-  "version": "1.2",
+  "version": "1.3",
   "browser_action": {
     "default_icon": "assets/icon-16.png"
   },

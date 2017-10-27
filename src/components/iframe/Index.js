@@ -14,8 +14,11 @@ export default class Iframe extends Component {
         this.URL = this.getURL();
         this.state = {
             element: '',
-            loadState: 0
+            loadState: 0,
+            hover: false
         };
+        this.totalWidth = 0;
+        this.totalHeight = 0;
     }
 
     reload() {
@@ -29,7 +32,6 @@ export default class Iframe extends Component {
             this.URL = this.getURL();
             this.reload();
         }
-        this.page = this.refs.myIframe.contentWindow;
     }
 
     getURL() {
@@ -65,6 +67,14 @@ export default class Iframe extends Component {
                 this.focusToElement();
             });
         }
+        if (!this.state.hover && this.props.applyScroll && this.page !== undefined) {
+            this.setScrollPosition();
+        }
+    }
+
+    setScrollPosition() {
+        this.page.document.documentElement.scrollTop = this.props.scrollRate.y * this.totalHeight;
+        this.page.document.documentElement.scrollLeft = this.props.scrollRate.x * this.totalWidth;
     }
 
     render() {
@@ -94,8 +104,32 @@ export default class Iframe extends Component {
                         }*/
                         this.page = this.refs.myIframe.contentWindow;
                         this.focusToElement();
+                        this.totalWidth = this.page.document.body.scrollWidth - this.props.size.width;
+                        this.totalHeight = this.page.document.body.scrollHeight - this.props.size.height;
+                        if(!this.props.keepScroll){
+                            this.props.setScrollRate({
+                                x: 0,
+                                y: 0
+                            });
+                        }
+                        this.refs.myIframe.contentWindow.addEventListener('scroll', function(e){
+                            if(this.state.hover){
+                                this.totalWidth = e.target.body.scrollWidth - this.props.size.width;
+                                this.totalHeight = e.target.body.scrollHeight - this.props.size.height;
+                                this.props.setScrollRate({
+                                    x: this.page.document.documentElement.scrollLeft / this.totalWidth,
+                                    y: this.page.document.documentElement.scrollTop / this.totalHeight
+                                });
+                            }
+                        }.bind(this))
                     }}
-                    ></iframe>
+                    onMouseOver={(e) => {
+                        this.setState({hover: true});
+                    }}
+                    onMouseOut={(e) => {
+                        this.setState({hover: false});
+                    }}
+                ></iframe>
             </div>
         )
     }
@@ -106,6 +140,10 @@ Iframe.propTypes = {
     reloadPage: PropTypes.func,
     loadingIcon: PropTypes.func,
     setURLMyWindow: PropTypes.func,
+    setScrollRate: PropTypes.func,
     size: PropTypes.object,
-    element: PropTypes.string
+    element: PropTypes.string,
+    scrollRate: PropTypes.object,
+    applyScroll: PropTypes.bool,
+    keepScroll: PropTypes.bool
 }

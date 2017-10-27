@@ -1,11 +1,10 @@
-
 const defaultValues = {
     url: mainURL,
     element: '',
     xPosition: 0,
     yPosition: 46,
     padding: 7,
-    canvas:{
+    canvas: {
         width: 0,
         height: 0
     },
@@ -13,7 +12,27 @@ const defaultValues = {
         width: 0,
         height: 0
     },
-    direction: 'horizontal'
+    direction: 'horizontal',
+    scrollRate: {
+        x: 0,
+        y: 0
+    },
+    applyScroll: true,
+    keepScroll: true
 };
-export const initialState = (canvasStoreFromStorage == {} ? defaultValues : Object.assign(defaultValues, canvasStoreFromStorage, {url : mainURL}));
+let options = {};
+if (canvasStoreFromStorage == {}) {
+    options = defaultValues;
+} else {
+    options = Object.assign(defaultValues, canvasStoreFromStorage, {url: mainURL});
+    if (!options.keepScroll) {
+        options.scrollRate = {
+            x: 0,
+            y: 0
+        }
+    }
+}
+
+export const initialState = options;
+
 
